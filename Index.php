@@ -13,7 +13,6 @@
   <link href="css/style-responsive.css" rel="stylesheet" />
 </head>
 <body class="login-img3-body">
-
   <div class="container">
     <form class="login-form">
       <div class="login-wrap">
@@ -27,16 +26,12 @@
           <input type="password" class="form-control" name="pass" placeholder="Mot de passe" id="pass">
         </div>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Se connecter</button>
-     
-      </div>
-      <div class="credits" >
+        </div>
+        <div class="credits" >
         <p style="color:red;" class="error"> </p>
       </div>
     </form>
-    
   </div>
-
-
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/fonctionLogin.js"></script>
