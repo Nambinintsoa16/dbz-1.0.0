@@ -1,6 +1,8 @@
 <?php
 include_once('fonction/class/main.php');
 $main=new main();
+$dt=new dateTime();
+$date=$dt->format("Y-m-d");
 ?>
 <section id="main-content">
       <section class="wrapper">
@@ -14,11 +16,23 @@ $main=new main();
       </div>
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <a href="?page=Livresondujour">
             <div class="info-box blue-bg">
               <i class="fa fa-shopping-cart"></i>
               <div class="count" >Livraison</div>
-               <div style="font-size: 28px; color: #fff;font-weight: bold;">50</div>
+               <div style="font-size: 28px; color: #fff;font-weight: bold;">
+               <?php
+               $sql="SELECT `NumFact` FROM `facture` WHERE `Statut` LIKE 'confirmer' AND`datelivre`='".$date."'";
+               $resultfact=$main->fetchAll($sql);
+               foreach ($resultfact as $resultfact){
+                $factdouble[]=$resultfact['NumFact'];
+               }
+               $facture=array_unique($factdouble);
+               echo count($facture);
+               ?>
+               </div>
             </div>
+            </a>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
            <a href="?page=listedesproduit"> 
@@ -34,9 +48,9 @@ $main=new main();
               </div>
             </div>
             <a>
-            <!--/.info-box-->
+          
           </div>
-          <!--/.col-->
+       
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <a href="?page=listedesclient"> 
@@ -54,7 +68,7 @@ $main=new main();
             </div>
             <a>
           </div>
-          <!--/.col-->
+          
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box green-bg">

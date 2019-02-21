@@ -45,7 +45,7 @@ if (isset($_GET['codeproduit'])):
                                     <h6>
                                         <?php echo $reponse['category']?>
                                     </h6>
-                                    <p class="proile-rating"> <?php?><div id="user-profile-2" class="user-profile">
+                                    <p class="proile-rating"> <div id="user-profile-2" class="user-profile">
         <div class="tabbable">
             <ul class="nav nav-tabs padding-18">
                 <li class="active">

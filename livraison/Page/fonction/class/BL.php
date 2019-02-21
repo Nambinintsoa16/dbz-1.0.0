@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 require('fpdf.php');
 
 class PDF extends FPDF

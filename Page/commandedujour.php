@@ -17,7 +17,7 @@ $date=$dt->format("Y-m-d");
             </ol>
           </div>
         </div>
-<table class="table" id="tableau">
+<table class="table" id="table">
   <thead>
     <tr> 
        <th style="text-align: center;background-color: #7d8997;color: #000;">N° facture</th>
@@ -111,35 +111,3 @@ for ($i=0; $i < $idcount ; $i++) {
   <tbody>
   </tbody>
 </table>
-<script type="text/javascript">
-        $(document).ready(function(){
-            $('#tableau').DataTable({
-
-"language":{
-        "sProcessing": "Traitement en cours ...",
-    "sLengthMenu": "Afficher _MENU_ lignes",
-    "sZeroRecords": "Aucun résultat trouvé",
-    "sEmptyTable": "Aucune donnée disponible",
-    "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
-    "sInfoEmpty": "Aucune ligne affichée",
-    "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
-    "sInfoPostFix": "",
-    "sSearch": "Chercher:",
-    "sUrl": "",
-    "sInfoThousands": ",",
-    "sLoadingRecords": "Chargement...",
-    "oPaginate": {
-      "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
-    },
-    "oAria": {
-      "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
-    }
-    }
-
-
-
-
-            });
-            
-        });
-      </script>

@@ -3,7 +3,7 @@ include_once('class/main.php');
 $main=new main();
             $sql="SELECT * FROM `produit`";
             $reponse=$main->fetchAll($sql);
-            ?>  <table class="table table-striped table-advance table-hover" id="tableau">
+            ?>  <table class="table table-striped table-advance table-hover" id="table">
               <thead>
                 <tr>
                     <th> Code du produit</th>
@@ -43,8 +43,8 @@ $main=new main();
                       </div>
                       <div class="modal-body" style="text-align: center;">   
                   <?php echo '<img style="height:500px;width:500px;" class="thumbnail" src="../img/produit/'.$reponse['photoproduit'].'">';?>
-                  </script>
-                        
+              
+            
                       </div>
                      <div class="modal-footer" style="text-align: center;">
                       <?php echo '<a href="?page=ficheproduit&codeproduit='.$reponse['codeproduit'].'">Consulter fiche individuel du produit </a>';?>
@@ -89,6 +89,5 @@ $main=new main();
                 });
              });
          });
-            $('#tableau').DataTable();
-        });
+         $("#table").dataTabele();
       </script>

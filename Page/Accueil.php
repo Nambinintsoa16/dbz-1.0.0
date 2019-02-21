@@ -153,6 +153,7 @@ if (!isset($_SESSION['login'])){
                       </a>
             <ul class="sub">
             <li><a class="" href="?page=Livresondujour">Livréson du jour </a></li>
+            <li><a class="" href="?page=Livresondujour1">Calandrier de livraison</a></li>
               <li><a class="" href="?page=vente">Livrée</a></li>
               <li><a class="" href="?page=commandedujour">Confirmée</a></li>
               <li><a class="" href="?page=commandedujour">Reportée</a></li>
