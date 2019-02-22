@@ -4,8 +4,7 @@ session_start();
 $main=new main();
             $sql="SELECT * FROM `client`";
             $reponse=$main->fetchAll($sql);
-            ?>       
-                
+            ?>        
                 <table class="table table-striped table-advance table-hover" id="tableau">
                 <thead>
                   <tr>
@@ -19,8 +18,6 @@ $main=new main();
                   </tr>
                 </thead>
                 <tbody class="listProduit" >
-
-           
                
              <?php foreach ($reponse as $reponse):?> 
                   <tr>
@@ -43,7 +40,7 @@ $main=new main();
                       </div>
                       <div class="modal-body" style="text-align: center;">   
                   <?php echo '<img style="height:500px;width:500px;" src="../img/photoclient/'.$reponse['photo'].'">';?>
-                  </script>
+                
                         
                       </div>
                       <div class="modal-footer" style="text-align: center">

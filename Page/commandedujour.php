@@ -114,7 +114,6 @@ for ($i=0; $i < $idcount ; $i++) {
 <script type="text/javascript">
         $(document).ready(function(){
             $('#tableau').DataTable({
-
 "language":{
         "sProcessing": "Traitement en cours ...",
     "sLengthMenu": "Afficher _MENU_ lignes",
