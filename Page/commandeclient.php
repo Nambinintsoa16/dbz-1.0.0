@@ -10,9 +10,10 @@ if(isset($_GET['idfacture'])){
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-files-o"></i> INFORMATION CLIENT</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Accueil</a></li>
-              <li><i class="fa fa-cube"></i>Produit</li>
-              <li><i class="fa fa-plus"></i>Ajout produit</li>
+              <li><i class="fa fa-home"></i><a href="?page=">Accueil</li></a>
+              <li><i class="fa fa-cube"></i><a href="#">Livraison</a> </li>
+              <li><i class="fa fa-liste"></i><a href="?page=livraison">Listes des livraison</a> </li>
+              <li><i class="fa fa-cube"></i><a href="#">Fiche indiv livre</a> </li>	
             </ol>
           </div>
         </div>

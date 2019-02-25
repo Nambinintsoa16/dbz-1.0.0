@@ -208,8 +208,8 @@ $date=$dt->format("Y-m-d");
 <div class="col-lg-3" style="margin: 0px;padding: 0px;">
     <div class="col-lg-12" style="margin: 0px;padding: 0px;"> 
        
-<a href="#">     <div class="social-box facebook" style="height: 200px;">
-              <i class="fa fa-facebook" style="font-size: 30px;"></i>
+    <div class="social-box facebook" style="height: 200px;">
+          <a href="#">     <i class="fa fa-facebook" style="font-size: 30px;"></i>
               <ul>
                 <li style="text-align: center;padding-left:85px;">
                   <span><img src="../img/logo.ico"></span>
@@ -218,21 +218,12 @@ $date=$dt->format("Y-m-d");
               </ul>
             </div> 
 
-  </div>
-</div> </a>
+  </div></a>
+</div> 
 <div class="col-lg-12">
 <div class="conttable"> 
 </div></div>      
               
-             
-
-        
-      
-
-               
-             
-         
-        <!-- page end-->
 <script type="text/javascript">
   $(document).ready(function(){
     $.post('fonction/fonctionAccuiel.php',function(data){

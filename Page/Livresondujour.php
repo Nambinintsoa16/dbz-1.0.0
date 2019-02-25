@@ -25,6 +25,7 @@ $reponse=$main->fetchAll($sql);
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title1 collapse">Detail Livraison Journalière </h4>
                         <h4 class="modal-title">Detail Livraison Journalière </h4>
 
                     </div>
@@ -39,38 +40,17 @@ $reponse=$main->fetchAll($sql);
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active">
                           
-								<table class="table table-dark" id="" >
-									<thead>
-										<tr>
-											<th>Date de Commande</th>
-											<th>Code de Produit</th>
-											<th> Client</th>
-											<th>Quantité</th>
-											<th>Matricule Utilisateur</th>
-											<th>observation</th>	
-										</tr>
-									</thead>
 							
-                              
-							  
-							   <?php foreach ($reponse as $value) {?>
-                                <tbody>
-								<tr>
-									<td><?php echo $value["datedecomand"];?></td>
-									<td><?php echo $value["codeproduit"];?></td>
-									<td><?php echo $value["idclient"];?></td>
-									<td><?php echo $value["quantite"];?></td>
-									<td><?php echo $value["matriculeuser"];?></td>
-									<td><?php echo $value["observation"];?></td>
-								</tr>
-                                </tbody>
-								<?php  } ;?>
-                                </table>
 								  
 							 
                             </div>
                             <div id="menu1" class="tab-pane fade">
 									<h3>Livraison  confirmé</h3>
+                             <div class="menu1">
+                                 
+                             </div>
+
+
                             </div>
                             <div id="menu2" class="tab-pane fade">
                             <h3>livraison reportée</h3>
@@ -78,6 +58,7 @@ $reponse=$main->fetchAll($sql);
                             <div id="menu3" class="tab-pane fade">
                             <h3>livraison annullée</h3>
                             </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -88,36 +69,11 @@ $reponse=$main->fetchAll($sql);
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <script type='text/javascript'>
-        /*	$(document).ready(function() {
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
-		
-		$('#calendar').fullCalendar({
-			themeSystem: 'bootstrap4',
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			editable: true,
-			events: "fonction/fonctioncalandrierdelivre.php",		
-			eventDrop: function(event, delta) {
-				alert(event.title + ' was moved ' + delta + ' days\n' +
-					'(should probably update your database)');
-			},
-			
-			loading: function(bool) {
-				if (bool) $('#loading').show();
-				else $('#loading').hide();
-			}
-			
-		});
-		
-	});*/
+      
 
         $(document).ready(function() {
+         
+
             $('#tableau').DataTable({
                 "language": {
                     "sProcessing": "Traitement en cours ...",
@@ -155,11 +111,19 @@ $reponse=$main->fetchAll($sql);
                 navLinks: true, // can click day/week names to navigate views
                 selectable: true,
                 selectHelper: true,
+                dayClick: function(date) { 
+                  $('.modal-title1').empty().append(date);
 
+               },
+           
                 select: function(start, end) {
-                    // Display the modal.
-                    // You could fill in the start and end fields based on the parameters
                     $('.modal').modal('show');
+                    var date=$('.modal-title1').html().split(":");
+                    var date2=date[0].split(" ");
+                    var dadefin=date2[2]+" "+date2[1]+ " "+date2[3]+" ";
+                    $.post('fonction/foctionretourcalandar.php',{date:dadefin},function(data){
+                       $('.menu1').empty().append(data);   
+                    });
 
                 },
                 eventClick: function(event, element) {

@@ -9,8 +9,8 @@ $main=new main();?>
             <h3 class="page-header"><i class="fa fa-files-o"></i>Liste des Livraisons Annulées</h3>
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="?page=">Accueil</a></li>
-              <li><i class="fa fa-cube"></i><a href="#">Produit</a></li>
-              <li><i class="fa fa-list"></i>Liste des produits</li>
+              <li><i class="fa fa-cube"></i><a href="#">Livraisons</a></li>
+              <li><i class="fa fa-list"></i>Liste des Livraisons Annulées</li>
             </ol>
           </div>
         </div>

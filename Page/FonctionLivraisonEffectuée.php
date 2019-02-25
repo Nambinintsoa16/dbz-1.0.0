@@ -19,7 +19,7 @@ $date=$dt->format("y-m-d");
               </thead>
                 <tbody class="listLivraisonAnnullee">  
          <?php 
-     $sql="SELECT `NumFact` FROM `facture` WHERE  `Statut` LIKE 'livre' AND `datelivre`='".$date."'";
+     $sql="SELECT `NumFact` FROM `facture` WHERE  `Statut` LIKE 'confirmer' AND `datelivre`='".$date."'";
           $resultfact=$main->fetchAll($sql);
            if($resultfact){
                foreach ($resultfact as $resultfact){
@@ -86,7 +86,7 @@ $date=$dt->format("y-m-d");
                     </td>
                     <td></td>
                     <td>
-                  <a class="btn btn-info" href="?page=commandeclient&idfacture=<?php echo $facture;?>"> <i class="fa fa-info"></i>   
+                  <a class="btn btn-info" href="<?php echo $facture;?>"> <i class="fa fa-info"></i>   
 
                     </td>
                   
