@@ -16,7 +16,7 @@ $date=$dt->format("Y-m-d");
       </div>
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-          <a href="?page=Livresondujour">
+          <a href="?page=livraison">
             <div class="info-box blue-bg">
               <i class="fa fa-shopping-cart"></i>
               <div class="count" >Livraison</div>
@@ -77,9 +77,9 @@ $date=$dt->format("Y-m-d");
           
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <a href="#">
+            <a href="?page=Livresondujour">
             <div class="info-box green-bg" style="height: 230px;">
-              <i class="fa fa-calandar"></i>
+              <i class="fa fa-calendar"></i>
               <div class="count">Calendrier</div>
               
             </div>
