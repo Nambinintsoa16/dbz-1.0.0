@@ -31,11 +31,10 @@
             </div>
         </div>
    </div>
-</fieldse> 
    <fieldset class="border p-2">
      <legend  class="w-auto">Livraison</legend> 
     <div class="form-group ">
-        <label for="datecommande" class="control-label col-lg-2 datecommande"><?php
+        <label for="datecommande" class="control-label col-lg-2 datecommande collapse"><?php
 date_default_timezone_set ("Europe/Moscow");
          $dt = new dateTime();
       

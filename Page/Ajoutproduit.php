@@ -11,12 +11,17 @@ if (isset($_GET['error'])) {
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i> Ajout produit</h3>
-            <ol class="breadcrumb">
+           <div class="col-lg-12"> <h3 class="page-header"><i class="fa fa-files-o"></i> Ajout produit</h3></div>
+           <div class="col-lg-10">
+           <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="index.html">Accueil</a></li>
               <li><i class="fa fa-cube"></i>Produit</li>
               <li><i class="fa fa-plus"></i>Ajout produit</li>
             </ol>
+           </div>
+          <div class="col-lg-2">
+          <a class="btn btn-primary col-lg-12" href="?page=listedesproduit"><i class="fa fa-list"></i></a>
+          </div>
           </div>
         </div>
         <div class="row">

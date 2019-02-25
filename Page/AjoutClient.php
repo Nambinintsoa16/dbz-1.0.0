@@ -15,13 +15,21 @@ if (isset($_GET['error'])){
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
+           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-files-o"></i> Ajout client</h3>
+            </div>
+            <div class="col-lg-10">
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="?page=">Accueil</a></li>
               <li><i class="fa fa-users"></i><a href="?page=">Client</a></li>
               <li><i class="fa fa-plus"></i>Ajout Client</li>
             </ol>
+            </div>
+          <div class="col-lg-2">
+          <a class="btn btn-primary col-lg-12" href="?page=listedesclient"><i class="fa fa-list"></i></a>
           </div>
+          </div>
+          
         </div>
         <div class="row">
           <div class="col-lg-12">
