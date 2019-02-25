@@ -153,10 +153,10 @@ if (!isset($_SESSION['login'])){
                       </a>
             <ul class="sub">
             <li><a class="" href="?page=Livresondujour">Livréson du jour </a></li>
-              <li><a class="" href="?page=vente">Livrée</a></li>
-              <li><a class="" href="?page=commandedujour">Confirmée</a></li>
-              <li><a class="" href="?page=commandedujour">Reportée</a></li>
-              <li><a class="" href="?page=commandedujour">Annulée</a></li>
+              <li><a class="" href="?page=LivraisonEffectuée">Livrée</a></li>
+              <li><a class="" href="?page=LivraisonConfirmée">Confirmée</a></li>
+              <li><a class="" href="?page=LivraisonReporter">Reportée</a></li>
+              <li><a class="" href="?page=LivraisonAnnulle">Annulée</a></li>
 
             </ul>
 </li>    
