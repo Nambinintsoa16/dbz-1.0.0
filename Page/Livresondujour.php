@@ -3,7 +3,7 @@ include_once('fonction/class/main.php');
 $main=new main();
 $dt=new dateTime();
 $date=$dt->format("Y-m-d");
-$sql="SELECT * FROM `commande` where 1";
+$sql="SELECT `idcomand`, `datedecomand`, `codeproduit`, `idclient`, `quantite`, `matriculeuser`, `observation` FROM `comande` ";
 $reponse=$main->fetchAll($sql);
 ?>
 <section id="main-content">
@@ -31,14 +31,15 @@ $reponse=$main->fetchAll($sql);
                     <div class="modal-body">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#home">Livraison Effectuée</a></li>
-                            <li><a data-toggle="tab" href="#menu1">Livraison en attente</a></li>
-                            <li><a data-toggle="tab" href="#menu2">Livraison reportée</a></li>
-                            <li><a data-toggle="tab" href="#menu3">Livraison annulée</a></li>
+                            <li><a data-toggle="tab" href="#menu1">Livraison Confirmée</a></li>
+                            <li><a data-toggle="tab" href="#menu2">Livraison Reportée</a></li>
+                            <li><a data-toggle="tab" href="#menu3">Livraison Annulée</a></li>
                         </ul>
 
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active">
-								<table class="table" id="">
+                          
+								<table class="table table-dark" id="" >
 									<thead>
 										<tr>
 											<th>Date de Commande</th>
@@ -49,31 +50,33 @@ $reponse=$main->fetchAll($sql);
 											<th>observation</th>	
 										</tr>
 									</thead>
-								</table>
+							
                               
-							   <tbody>
+							  
 							   <?php foreach ($reponse as $value) {?>
+                                <tbody>
 								<tr>
 									<td><?php echo $value["datedecomand"];?></td>
-									<td><?php echo $value["codeprosuit"];?></td>
+									<td><?php echo $value["codeproduit"];?></td>
 									<td><?php echo $value["idclient"];?></td>
 									<td><?php echo $value["quantite"];?></td>
 									<td><?php echo $value["matriculeuser"];?></td>
 									<td><?php echo $value["observation"];?></td>
 								</tr>
+                                </tbody>
 								<?php  } ;?>
-							   </tbody>
+                                </table>
 								  
 							 
                             </div>
                             <div id="menu1" class="tab-pane fade">
-									<h3>en entente de confirmation</h3>
+									<h3>Livraison  confirmé</h3>
                             </div>
                             <div id="menu2" class="tab-pane fade">
-								<h3></h3>
+                            <h3>livraison reportée</h3>
                             </div>
                             <div id="menu3" class="tab-pane fade">
-
+                            <h3>livraison annullée</h3>
                             </div>
                         </div>
                     </div>
