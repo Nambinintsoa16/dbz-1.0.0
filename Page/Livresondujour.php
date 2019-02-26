@@ -72,7 +72,10 @@ $reponse=$main->fetchAll($sql);
       
 
         $(document).ready(function() {
-         
+         var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
 
             $('#tableau').DataTable({
                 "language": {
@@ -136,15 +139,39 @@ $reponse=$main->fetchAll($sql);
                 },
                 editable: true,
                 events: "fonction/fonctioncalandrierdelivre.php",
-                eventLimit: true // allow "more" link when too many events
+                events: [
+                <?php
+                $dt=new dateTime();
+                $date=$dt->format("Y-m-d"); 
+     $sql="SELECT `datelivre` FROM `facture` ";
+                $facturedouble=$main->fetchAll($sql);
+                if($facturedouble):
+                foreach ($facturedouble as $facturedouble) {
+                 $facturetab[]=$facturedouble['datelivre'];
+                }
+                $facture=array_unique($facturetab);
+                foreach ($facture as $facture):
+                $sql="SELECT `NumFact` FROM `facture` WHERE `Statut` LIKE 'confirmer' AND `datelivre` LIKE '".$facture ."'";
+                $NumFactconf=$main->fetchAll($sql);
+                foreach ($NumFactconf as $NumFactconf) {
+                  $NumFactconfdouble[]=$NumFactconf['NumFact'];
+                } 
+                  $factureconfirm=array_unique($NumFactconfdouble);
+                  $coutlivre=count($factureconfirm);
+                ?>
+                {
+                    title: '<?php echo "confirmer : ".$coutlivre;?>',
+                    start: '<?php echo  $facture;?>'
+                }
+                <?php
+                echo ","; endforeach;endif;?>
+               
+            ]
+                ,eventLimit: true 
 
             });
-
-            // Bind the dates to datetimepicker.
-            // You should pass the options you need
             $("#starts-at, #ends-at").datetimepicker();
 
-            // Whenever the user clicks on the "save" button om the dialog
             $('#save-event').on('click', function() {
                 var title = $('#title').val();
                 if (title) {

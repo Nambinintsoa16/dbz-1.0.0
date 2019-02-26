@@ -23,18 +23,6 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
  
               
        <div class="panel">
-     
-                         <?php
-                         $sql="SELECT * FROM `client` WHERE `idclient`='".$_GET['idclient']."'";
-                           $reponse=$main->fetch($sql);
-                                  
-                            
-                                      
-            
-             $sql ='UPDATE `facture` SET `vu`="'.$_SESSION['login']['matricule'].'" WHERE `NumFact` ="'.$_GET['idfacture'].'"';
-             $main->fetch($sql);         
-                                        ?>
-                           
       <div class="panel-body">
        
                 <div class="row">
@@ -248,12 +236,7 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
           $.post('fonction/confirmationlivre.php',{idfacture:idfacture},function(data){
                 $('.confirm').empty().append(data);
                 $('.confirmform').addClass('collapse');
-                $.post('fonction/fonctionbadlivre.php',function(data){
-                $('.livredrop').empty().append(data.badge);
                 alert('Commande confimer');
-             },'json');
-
-                
             
           });
       });
@@ -268,6 +251,3 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
     
   });
 </script>
-
-
-relance
