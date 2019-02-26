@@ -3,7 +3,7 @@ include_once('fonction/class/main.php');
 $main=new main();
 session_start();
 if (!isset($_SESSION['login'])){
- header('location:../../Index.php');
+ header('location:../Index.php');
  }else{
   $sql="SELECT * FROM `user` WHERE `matricule` LIKE ?";
   $login=$main->fetch($sql,array($_SESSION['login']['matricule']));
@@ -18,37 +18,33 @@ if (!isset($_SESSION['login'])){
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-   <meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="../js/jquery.js"></script>
   <link rel="shortcut icon" href="../img/icons/logo.ico">
   <title>Gestion de vente sur Facebook</title>
+ 
+  <link href="../css/dataTables.jqueryui.min.css" rel="stylesheet">
   <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link rel='stylesheet' type='text/css' href='../css/fullcalendar.css' />
+  <link rel='stylesheet' type='text/css' href='../css/fullcalendar.print.css' media='print' />
+  <link rel='stylesheet' type='text/css' href='../css/theme.css'>
   <link href="../css/bootstrap-theme.css" rel="stylesheet">
   <link href="../css/elegant-icons-style.css" rel="stylesheet" />
   <link href="../css/font-awesome.min.css" rel="stylesheet" />
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/style-responsive.css" rel="stylesheet" />
   <link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
-  <link href="../css/dataTables.material.css" rel="stylesheet">
-  
+  <script src="../js/jquery.js"></script>
+  <script src="../js/Chart.min.js"></script>
   
 
   </head>
-
 <body>
   <section id="container" class="">	
     <header class="header " style="background-image: url('../img/banniere blanc.png');background-size: cover;background-repeat: no-repeat; ">
       <div class="top-nav notification-row">
 
-
-
-
-
-
-
-
-        <ul class="nav pull-right top-menu">
+         <ul class="nav pull-right top-menu">
           <li id="alert_notificatoin_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                       <i class="fa fa-truck"></i>
@@ -114,70 +110,73 @@ if (!isset($_SESSION['login'])){
           <li>
             <a class="" href="?page=recap">
                           <i class="icon_house_alt"></i>
-                          <span>Accueil</span>
+                          <span>Accuiel</span>
                       </a>
-          </li>
-          <li>
-            <a class="" href="?page=profile">
-            <i class="fa fa-user" aria-hidden="true"></i>
-                          <span>Utilisateur</span>
-                      </a>
-          </li>
-
-           <li class="sub-menu">
-            <a href="javascript:;" class="">
-                  <i class="fa fa-truck" aria-hidden="true"></i>
-                          <span>Livraison</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="?page=AjoutClient">livraison on attente</a></li>
-              <li><a class="" href="?page=listedesclient">Livraison du jour </a></li>
-              <li><a class="" href="?page=nonlivre">Nom livre</a></li>
-              <li><a class="" href="?page=livreannule">Livraison Annule</a></li>
-            </ul>
-          </li>
-
-
-           <li class="sub-menu">
-            <a href="javascript:;" class="">
-                   <i class="fa fa-phone" aria-hidden="true"></i>
-                          <span>Client appel</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="?page=AjoutClientAppel">Ajout client</a></li>
-              <li><a class="" href="?page=listeclientApp">List client</a></li>
-              
-            </ul>
           </li>
          
- <li class="sub-menu">
-            <a  href="?page=vente">
-                   <i class="fa fa-money" aria-hidden="true"></i>
-                          <span>Vente</span>
 
+           <li class="sub-menu">
+            <a href="javascript:;" class="">
+                    <i class="fa fa-users"></i>
+                          <span>Client</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
+            <ul class="sub">
+              <li><a class="" href="?page=listedesclient">Liste des clients </a></li>
 
+            </ul>
           </li>
 
-
-         <li class="sub-menu">
+          <li class="sub-menu">
             <a href="javascript:;" class="">
-                  <i class="fa fa-tags" aria-hidden="true"></i>
+                     <i class="fa fa-cube"></i>
+                          <span>Produit</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub"> 
+              <li><a class="" href="?page=listedesproduit">Liste des produit </a>  
+            </ul>
+          </li>
+
+<li class="sub-menu">
+            <a href="javascript:;" class="">
+                    <i class="fa fa-users"></i>
+                          <span>Autre</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="?page=infoetreclamation">Reclamation</a></li>
+            </ul>
+</li>         
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                    <i class="fa fa-users"></i>
                           <span>Commande</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="?page=listcommand">liste des commande </a></li>
-              <li><a class="" href="?page=rechercherclient">Recherche</a></li>
-              <li><a class="" href="?page=listedesclient">Livraison du jour </a></li>
-              <li><a class="" href="?page=nonlivre">Nom livre</a></li>
-              <li><a class="" href="?page=livreannule">Livraison Annule</a></li>
+              <li><a class="" href="?page=vente">Passe commande</a></li>
             </ul>
-          </li>
+</li>    
 
-      </ul>
+<li class="sub-menu">
+            <a href="javascript:;" class="">
+                    <i class="fa fa-users"></i>
+                          <span>Livraison</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="?page=livraison">Livréson du jour </a></li>
+              <li><a class="" href="?page=LivraisonEffectuée">Livrée</a></li>
+              <li><a class="" href="?page=LivraisonReporter">Reportée</a></li>
+              <li><a class="" href="?page=LivraisonAnnulle">Annulée</a></li>
+
+            </ul>
+</li>    
+
+        
+
+        </ul>
        
       </div>
     </aside>
@@ -188,7 +187,8 @@ if (!isset($_SESSION['login'])){
             
 
   
-  
+  <script src="../js/jquery.js"></script>
+   <script src="../js/jquery-ui-1.10.4.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <script src="../js/function.js"></script>
   <script src="../js/jquery.scrollTo.min.js"></script>
@@ -196,9 +196,8 @@ if (!isset($_SESSION['login'])){
   <script src="../js/gritter.js" type="text/javascript"></script>
   <script  src="../js/dataTables.min.js"></script>
   <script  src="../js/dataTablesmin.js"></script>
- <script src="../js/jquery-ui-1.10.4.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.tablesorter.min.js"></script>
-  
+  <script type='text/javascript' src='../js/fullcalendar.min.js'></script>
+  <script src="../js/scripts.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       drop();
@@ -225,3 +224,4 @@ if (!isset($_SESSION['login'])){
   </script>
 </body>
 </html>
+

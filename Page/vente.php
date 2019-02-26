@@ -33,14 +33,7 @@
    </div>
    <fieldset class="border p-2">
      <legend  class="w-auto">Livraison</legend> 
-    <div class="form-group ">
-        <label for="datecommande" class="control-label col-lg-2 datecommande collapse"><?php
-date_default_timezone_set ("Europe/Moscow");
-         $dt = new dateTime();
-        $date = $dt->format("d/m/Y");
-        echo $date; ?>
-        </label>
-     </div>     
+        
    <div class="form-group">
       <label class="control-label col-lg-2" for="inputSuccess">Dade de livrason<span class="required"> *</span></label>
         <div class="col-lg-10">

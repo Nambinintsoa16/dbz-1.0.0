@@ -1,4 +1,20 @@
  $(document).ready(function() {
+var today = new Date();
+var dd = today.getDate();
+
+var mm = today.getMonth()+1; 
+var yyyy = today.getFullYear();
+if(dd<10) 
+{
+    dd='0'+dd;
+} 
+
+if(mm<10) 
+{
+    mm='0'+mm;
+} 
+today = yyyy+'-'+mm+'-'+dd;
+
      $.post('fonction/fonctiondropdown.php', function(data) {
          $('.relancedrop li:last-child').prev().append(data);
      });
@@ -113,13 +129,21 @@
 
      $('.btn-test').on('click', function(event) {
          event.preventDefault();
+
+  
+
+
+
+         var start = new Date();
          var produit = new Array();
          var quantite = new Array();
          var i = 0;
          var t = 0;
          var client = $('.select-client').val();
-         var datecommande = $('.datecommande').html();
+         var datecommande=today;
+         console.log(today);
          var date = $('.datelivre').val();
+         console.log(date);
          var Debut = $('.Debut').val();
          var Fin = $('.Fin').val();
          var ville = $('.ville').val();

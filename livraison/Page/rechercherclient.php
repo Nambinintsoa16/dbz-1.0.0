@@ -21,7 +21,7 @@
                 <form class="form-inline" role="form"  method="post">
                   <div class="form-group">
                     <label class="sr-only" for="lienfb"></label>
-                    <input type="text" class="form-control search_input" id="recherche" placeholder="Entre mot cle" name="recherche">
+                    <input type="text" class="form-control" id="recherche" placeholder="Entre mot cle" name="recherche">
                   </div>
                 <button type="submit" class="btn btn-primary">Recherche</button>
                 <div class="form-inline">   
@@ -42,49 +42,16 @@
            
       </section>
     </section>
-<script type="text/javascript"> 
-$(document).ready(function(){
-$(".search_input").focus();
-$(".search_input").keyup(function() 
-{
-var search_input = $(this).val();
-var keyword= encodeURIComponent(search_input);
-var yt_url='http://api.search.live.net/json.aspx?JsonType=callback&JsonCallback=?&Appid=642636B8B26344A69F5FA5C22A629A163752DC6B&query='+keyword+'&sources=web'; 
- 
-$.ajax({
-type: "GET",
-url: yt_url,
-dataType:"jsonp",
-success: function(response)
-{
- 
-$("#result").html('');
-if(response.SearchResponse.Web.Results.length)
-{
- 
- 
- 
-$.each(response.SearchResponse.Web.Results, function(i,data)
-{
-var title=data.Title;
-var dis=data.Description;
-var url=data.Url;
- 
-var final="<div class='webresult'><div class='title'><a href='"+url+"' target='_blank'>"+title+"</a></div><div class='desc'>"+dis+"</div><div class='url'>"+url+"</div></div>";
-$("#result").append(final);
- 
-});
- 
-}
-else
-{
-$("#result").html("<div id='no'>No results</div>");
-}
-}
- 
-});
- 
-});
-});
- 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.btn').on('click',function(event){
+        event.preventDefault();
+        var recherche=$('#recherche').val();
+        $.post('fonction/fonctionrechercheClient.php',{recherche:recherche},function(data){
+            $('.resultat').empty().append(data);
+            console.log(recherche);
+        });
+    });
+
+  });
 </script>

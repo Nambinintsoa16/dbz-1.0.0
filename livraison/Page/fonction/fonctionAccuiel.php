@@ -13,6 +13,29 @@ $sql1="SELECT `datedecomand` FROM `comande` WHERE `matriculeuser` ='".$user."'  
 $reponse=$main->requette2($sql1);
 
 ?>
+
+ <table class="table table-striped table-advance table-hover" id="tableau">
+                <thead class="tablehead">
+                   <tr>
+                    <th><i class="orange ace-icon icon_calendar"></i> Date</th>
+                    <th><i class="orange ace-icon fa fa-shopping-cart" aria-hidden="true"></i> Vente</th>
+                    <th><i class="orange fa fa-eur"></i> Montant</th>
+                    <th><i class="orange ace-icon fa fa-info-circle bigger-120"></i> DMD PRIX</th>
+                    <th><i class="orange ace-icon fa fa-info-circle bigger-120"></i> DMD INFOS</th>
+                    <th>  
+                   <i class="orange ace-icon fa fa-exclamation-circle" aria-hidden="true"></i> RECLAMATION
+                    </th>
+                    <th><i class="orange ace-icon  fa fa-paper-plane-o bigger-120" aria-hidden="true"></i>
+ RELANCE</th>
+                    <th><i class="orange ace-icon fa fa-life-ring" aria-hidden="true"></i>
+ AUTRES</th>
+                    <th><i class="orange ace-icon fa fa-plus" aria-hidden="true"></i>
+                    TOTAL DISCUTION</th>
+                  </tr>
+                </thead>
+           <tbody >
+                 
+
   <tr>
   	<th style="text-align: center;"><?php echo $DateTime ;?></th>
   	
@@ -82,7 +105,27 @@ $reponse=$main->requette2($sql1);
   	 echo $reponseAutre;
   	?>
   	</th>
-  	<th class="totaltab" style="text-align: center"><?php echo $reponseAutre+$reponsecountrecla+$reponseinfo + $reponseprix+$reponsecount+$reponsecountrel;  ?></th>
+  	<th class="totaltab" style="text-align: center"><?php 
+     $sql="SELECT `NumFact` FROM `facture` WHERE `datedefacture`='".$DateTime."' AND `user`='".$user."'";
+     $reponse=$main->fetchAll($sql);
+    
+     if ($reponse) {
+      foreach ($reponse as $reponse) {
+        $unique[]=$reponse['NumFact'];
+       }
+        $vent=array_unique ($unique); 
+         $reponsevent=count($vent);
+         
+     }else{
+      $reponsevent=0;
+     }
+
+     echo $reponseAutre+$reponsecountrecla+$reponseinfo + $reponseprix+$reponsevent+$reponsecountrel;
+  
+       ?>
+
+
+    </th>
   </tr>
 <?php	
 $dt->modify('-1 day');
@@ -156,16 +199,35 @@ $sql="SELECT `datedecomand` FROM `comande` WHERE `matriculeuser` ='".$user."'  A
   	 ?>
   	</th>
   	<th style="text-align: center;">
-  	<?php echo $reponseAutre+$reponsecountrecla+$reponseinfo + $reponseprix+$reponsevent+$reponsecountrel;?>
+  	<?php
+        $sql="SELECT `NumFact` FROM `facture` WHERE `datedefacture`='".$DateTime."' AND `user`='".$user."'";
+     $reponse=$main->fetchAll($sql);
+    
+     if ($reponse) {
+      foreach ($reponse as $reponse) {
+        $unique[]=$reponse['NumFact'];
+       }
+        $vent=array_unique ($unique);
+         $reponsevent=count($vent);
+         
+     }else{
+      $reponsevent=0;
+     }
+
+     echo $reponseAutre+$reponsecountrecla+$reponseinfo + $reponseprix+$reponsevent+$reponsecountrel;
+  
+
+  
+       ?>
   	</th>
   </tr>
+
+
  <?php
- echo $DateTime;
  $dt->modify('-1 day');
  $DateTime=$dt->format('Y-m-d');
 }
 
  ?>            
-<script type="text/javascript">
-	
-</script>
+  </tbody>  
+</table>

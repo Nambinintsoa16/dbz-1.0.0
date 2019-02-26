@@ -2,12 +2,16 @@
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Liste des produit</h3>
-            <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Accueil</a></li>
-              <li><i class="fa fa-cube"></i>Produit</li>
+           <div class="col-lg-12">
+           <h3 class="page-header"><i class="fa fa-files-o"></i>Liste des produit</h3>
+           </div>
+          
+           <ol class="breadcrumb">
+              <li><i class="fa fa-home"></i><a href="?page=">Accueil</a></li>
+              <li><i class="fa fa-cube"></i><a href="#">Produit</a></li>
               <li><i class="fa fa-list"></i>Liste des produits</li>
             </ol>
+           
           </div>
         </div>
 

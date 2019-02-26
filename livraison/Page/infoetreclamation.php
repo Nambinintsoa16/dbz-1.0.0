@@ -1,127 +1,172 @@
+ <?php
+$dt=new dateTime();
+$date=$dt->format('Y-m-d');
+ ?>
  <section id="main-content">
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-facebook"></i>Info et réclation</h3>
+            <h3 class="page-header"><i class="fa fa-facebook"></i>Réclamation</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Accueil</a></li>
-              <li><i class="icon_document_alt"></i>info et réclamation</li>
+              <li><i class="fa fa-home"></i><a href="?page=">Accueil</a></li>
+               <li><i class="icon_document_alt"></i><a href="#">Autre</a></li>
+              <li><i class="icon_document_alt"></i>Réclamation</li>
             </ol>
           </div>
         </div>
  <div class="col-lg-12">
  <section class="panel">
-                  <div class="panel-heading">
-            <label class="nature"><b><i class="orange fa fa-info-circle"></i></b></label>
+  <div class="panel-heading"></div>
+  <div class="panel-body">
+    
+    <form>
+    
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <fieldset><legend>Date</legend>
+            <div class="col-md-12">
+            <input type="Date" name="dateinfo" class="form-control date" value="<?php echo $date;?>">
+            </div>
+            </fieldset>
+          </div>
+        <div class="col-md-4">
+            <fieldset><legend>Objet</legend>
+            <div class="col-md-12">
+             <select class="form-control ReclamationNature objet">
+                <option>Réclamation</option>
+                <option>demande d'information</option>             
+              </select>
+            </div>
+            </fieldset>
+          </div>
+            <div class="col-md-4">
+             <fieldset><legend>Nature</legend>
+              <select class="form-control ReclamationNature type">
+                <option>Autre</option>
+                <option>Efficacité</option>
+                <option>Produit</option>
+                <option>Prix</option>
+                <option>Mode d'utisation</option>
+                <option>Qantité</option>
+                <option>Service de livraison</option>             
+              </select>
+               </fieldset>
+            </div>
+         
+          
+         </div>
+      </div>
+ <div class="produitcont">
+<fieldset> <legend>Produit</legend>
+       <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-7">
+                  <input type="text" class="form-control cherche produit select-client" id="client" style="width: 350px;" placeholder="Produit">
+                </div>
+                <div class="col-lg-4" style="text-align: right;">
+                  <div class="imageproduit img-thumbnail" style="width: 150px;height: 150px;text-align:center;padding: auto auto;">
+                    <h5 style="margin-top:45%; ">Photo Produit</h5> 
                   </div>
-                  <div class="panel-body">
-                    <div class="form">   
-            <form>          
-                  <div class="form-group">   
-                    <div class="col-lg-12">
-                      <div class="row">
-                         
-                           <div class="col-lg-2">
-                        <label for="date-d-eregistrement"><b>Date du </b></label>
-                        <input type="date" name="date-d-eregistrement" class="form-control date-d-eregistrement" style="width: 150px;"> 
-                           </div>  
-                           <div class="col-lg-9">
-                            <label for="nature"><b>Activité</b></label>
-                          <select class="form-control nat" style="width: 255px;">
-                              <option>Demande d'information</option>
-                              <option>Réclamation</option>
-                              <option>Autre</option>
-                            </select> 
-                           </div>  
-                        <div class="col-lg-2" style="margin-bottom: 10px;"> 
-          <label class="control-label col-lg-2" for="commentaire"><b>Nature</b></label>
-                           <select class="form-control ReclamationNature type">
-                            <option>Produit</option>
-                            <option>Prix</option>
-                            <option>Mode d'utisation</option>
-                            <option>Qantité</option>
-                            <option>Efficacité</option>
-                            <option>Service de livraison</option>
-                        </select>
-                        </div>
+                  <span class="idProduit"></span>
+                </div>
+                 
+            </div>
+        </div>
+</fieldset>
+</div>
 
-                        <div class="col-lg-3" style="margin-bottom: 10px;"> 
-          <label class="control-label col-lg-2" for="commentaire"><b>Produit</b></label>
-                  
-                          <select class="form-control select ">
-                            <?php var_dump($main);
-                $sql="SELECT `codeproduit`,`designation` FROM `produit`";
-                $reponse=$main->fetchAll($sql);
-                foreach ($reponse as $reponse): 
-              ?>
-                    <option> <?php echo $reponse['codeproduit']." / ".$reponse['designation'];?></option>
-                    <?php endforeach;?>
-                          </select>
-                        </div>
 
-                        <div class="col-lg-6" style="margin-bottom: 10px;"> 
-          <label class="control-label col-lg-4" for="commentaire"><b>Recherche produit</b></label>
-                  <input type="text" name="" class="form-control" placeholder="Recherche produit">
-                        </div>
-           
-                        <div class="col-lg-3" style="margin-bottom: 10px;">
-         <label class="control-label col-lg-3" for="commentaire"><b>Client</b></label>
-                          <select class="form-control select ClientObj">
-                            <?php var_dump($main);
-                $sql="SELECT  `idclient`, `identifientsurfacebook`FROM `client`";
-                $reponse=$main->fetchAll($sql);
-                foreach ($reponse as $reponse): 
-              ?>
-                    <option> <?php echo $reponse['idclient']." / ".$reponse['identifientsurfacebook'];?></option>
-                    <?php endforeach;?>
-                          </select>
-                        </div>
-             <div class="col-lg-5" style="margin-bottom: 10px;">
- <label class="control-label col-lg-5" for="recherche"><b>Recherche Client</b></label>             
- <input type="text" class="form-control cherche" name="recherche" placeholder="Recherche Client">
-              </div>
-                      </div>
-                    </div>
+
+<fieldset class="class="border p-2""><legend>Client</legend>
+      <div class="form-group col-md-12">
+       
+           <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-7">
+                  <input type="text" class="form-control cherche client select-client" id="client" style="width: 350px;" placeholder="Client">
+                </div>
+                <div class="col-lg-4" style="text-align: right;">
+                  <div class="image img-thumbnail" style="width: 150px;height: 150px;text-align:center;padding: auto auto;">
+                    <h5 style="margin-top:45%; ">Photo client</h5> 
                   </div>
-                  <div class="form-group">   
-                    <div class="col-lg-12">
-                      <div class="row">
-                        <label class="control-label col-lg-2" for="commentaire"><b>Commentaire</b></label>
-                        <div class="col-lg-12">
-                          <textarea class="form-control commentaire" name="commentaire" rows="7" cols="50"  style="resize: none;"></textarea>
-                        </div>
- <div class="col-lg-1" style="margin-top: 10px;">
- <button class="btn btn-primary savedisc">Enregistre  <i class="gray fa fa-save" aria-hidden="true"></i></button>
-              </div>
-                      </div>
-                    </div>
-                  </div>
-              </form>       
-                    </div>
-                  </div>
-                </section>
+                  <span class="idclient"></span>
+                </div>
+                 
+            </div>
+        </div>
+      
+      </div>
+</fieldset>
 
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('.savedisc').on('click',function(event){
-          event.preventDefault();
-        var date=$('.date-d-eregistrement').val();
-        var commentair=$('.commentaire').val();
-        var idclient=$('.ClientObj').val();
-        var type=$('.type').val();
-        var nature=$('.nat').val();
-
-        $.post('fonction/Ajoutdiscution.php',{date:date,idclient:idclient,commentair:commentair,type:type,nature:nature},function(data){
-               console.log(data);
-                  $('.date-d-eregistrement').val(" ");
-                  $('.commentaire').val(" ");
-                  $('.cherche').val(" ");
-        });
-        
-       });        
-        
-      });
-    </script>     
-   
+<fieldset class="class="border p-2""><legend>Commentaire</legend>
+      
+      <div class="form-group">
+        <textarea class="form-control remarque" style="resize:none;"></textarea>
+      </div> 
+</fieldset>
+<fieldset>
+  <button class="btn btn-primary valider"><i class="fa fa-sauve"></i> Enregistré</button>
+</fieldset>
+    </form>
   </div>
-</div> 
+ </section>
+ </section> 
+ <script type="text/javascript">
+   $(document).ready(function(){
+    select();
+    $('.client').autocomplete({
+       source : 'fonction/fonctionlisteclien.php',
+    select : function(event, ui){ 
+      $.post('fonction/image.php',{image:ui.item},function(data){
+         $('.image').empty().append('<img style="width:100%;height:100%;" src="../img/photoclient/'+data.image+'">');
+          $('.idclient').empty().append(data.idclient);
+      },'json'); 
+    }
+  });
+  $('.type').on('change',function(){
+         select();
+  });
+  function select(){
+    var nature=$('.type').val();
+    if (nature=="Autre" || nature=="Service de livraison"){
+       $('.produitcont').addClass('collapse');
+    }else{
+      $('.produitcont').removeClass('collapse');
+    }
+  }
+  $('.valider').on('click',function(event){
+       event.preventDefault();
+
+       if(typeof($('.produitcont').val())=='undifend'){
+        var date=$('.date').val();
+        var idclient=$('.idclient').html();
+        var commentaire=$('.remarque').val();
+        var nature=$('.type').val();
+     $.post('fonction/fonctionajoutreclamation.php',{date:date,idclient:idclient,commentaire:commentaire,nature:nature},function(data){
+        });
+       }else{
+        var date=$('.date').val();
+        var idclient=$('.idclient').html();
+        var commentaire=$('.remarque').val();
+        var nature=$('.type').val();
+        var objet=$('.objet').val();
+        var codeproduit=$('.idProduit').html();
+        $.post('fonction/fonctionajoutreclamation.php',{codeproduit:codeproduit,date:date,idclient:idclient,commentaire:commentaire,nature:nature,objet:objet},function(data){
+          console.log(data);
+
+        });
+       }
+  });
+
+    $('.produit').autocomplete({
+       source : 'fonction/fonctionlisteprod.php',
+    select : function(event, ui){ 
+      $.post('fonction/imageprod.php',{image:ui.item},function(data){
+         $('.imageproduit').empty().append('<img style="width:100%;height:100%;" src="../img/produit/'+data.image+'">');
+            $('.idProduit').empty().append(data.codeproduit);
+      },'json'); 
+    }
+  });
+   });
+ </script>

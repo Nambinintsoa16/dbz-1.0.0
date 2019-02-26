@@ -16,7 +16,12 @@ $('#pass').on('focus',function(){
 	}else{
 	$.post('page/fonction/fonctionLogin.php',{user:user,pass:pass},function(data){
              if(data.error===false){
-               window.location.replace("page/Accueil.php");
+             	if(data.statut=="Administrateur"){
+             		window.location.replace("page/Accueil.php");
+             	}else if(data.statut=="user"){
+             		window.location.replace("livraison/Page/Accueil.php");
+             	}
+               
              }else{
              $('.error').empty().append('Mot de passe incorrecte ou non d\'utilisateur incorrect!');
              }

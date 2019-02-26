@@ -217,14 +217,6 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
                      <div class="col-md-12" style="margin-top: 15px;">
                 <?php echo '<a class="btn btn-default valider" style="width:175px;padding:0px;height:25px;"   href="fonction/fonctionvente.php?idfacture='.$_GET['idfacture'].'"><span style="background:#2980b9;height:100%;width:150px;"><i class="fa fa-fa fa-check" style="color:#fff;width:30px;"></i></span>   Valider la commande</a>';?>
                      </div>
-                     <div class="col-md-12" style="margin-top: 15px;">
-                    <a style="height:25px;" class="btn btn-default  modifier"  href="#"><span style="background-color:#8e45ad;color: #fff;" ><i class="fa fa-edit" ></i>  </span>Modifier la commande </a>
-                     </div>
-                     <div class="col-md-12" style="margin-top: 15px;">
-                <?php echo '<a class="btn btn-default Annule" style="width:175px;height:25px;" href="fonction/Annule.php?idfacture='.$_GET['idfacture'].'"><span style="background-color:#d93625;width:150px;"><iclass="fa fa-edit"></i></span> Annule commande</a>';?> 
-                     </div>
-
-                  </div>
                  
                 </div>
               </div>
@@ -265,38 +257,9 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
 
     });
 
-    $('.modifier').on('click',function(event){
-        event.preventDefault();
-      
-
-    });
-    
-    $('.Annule').on('click',function(event){
-        event.preventDefault();
-        var remarque=$('.remarque').val();
-        if (remarque!="") {
-      $.post($(this).attr('href'),{remarque:remarque},function(data){
-        console.log(data);
-        var idfacture=<?php echo "'".$_GET['idfacture']."'";?>;
- $.post('fonction/confirmationlivre.php',{idfacture:idfacture},function(data){
-                $('.confirm').empty().append(data);
-                $('.confirmform').addClass('collapse');
-                alert('Commande Annule');
-
-            
-          });
-      });
-           }else{
-            alert('Vous deviez indiquer pourquoi la commande a été annuler ');
-           }
-     
-
-    
-
-    });
+   
     
     
-
     
   });
 </script>

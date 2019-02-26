@@ -1,213 +1,156 @@
-                <?php
-include_once('fonction/class/main.php');
-$main=new main();
-$dt=new DateTime();
-$soustout=0;
-?>
 
+<?php 
+if (isset($_GET['error'])) {
+   if ($_GET['error']==0) {
+     echo "<script type=\"text/javascript\">
+     alert('Succes');</script>";
+   }
+}
+?>
 <section id="main-content">
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i>Livraison</h3>
-            <ol class="breadcrumb">
+           <div class="col-lg-12"> <h3 class="page-header"><i class="fa fa-files-o"></i> Ajout produit</h3></div>
+           <div class="col-lg-10">
+           <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="index.html">Accueil</a></li>
-              <li><i class="fa fa-cube"></i>Livraison</li>
-              <li><i class="fa fa-plus"></i>Detail de livraison</li>
+              <li><i class="fa fa-cube"></i>Produit</li>
+              <li><i class="fa fa-plus"></i>Ajout produit</li>
             </ol>
+           </div>
+          <div class="col-lg-2">
+          <a class="btn btn-primary col-lg-12" href="?page=listedesproduit"><i class="fa fa-list"></i></a>
+          </div>
           </div>
         </div>
-       
-      
-          <?php
-            $sql="SELECT * FROM `client` WHERE `idclient`='".$_GET['idclient']."'";
-            $reponse=$main->fetch($sql);
-                                  
-                            
-                                      
-            
-             $sql ='UPDATE `facture` SET `vu`="'.$_SESSION['login']['matricule'].'" WHERE `NumFact` ="'.$_GET['idfacture'].'"';
-             $main->fetch($sql);         
-                                        ?>
-                           
-      <div class="panel-body" >
-       
-                <div class="row">
-                        <div class="col-xs-3 col-sm-3 center">
-                            <span class="profile-picture">
-                              <?php
-  echo '<img alt="'.$reponse['Nom'].'" class="simple" src="../img/photoclient/'.$reponse['photo'].'"class="img-thumbnail" style="height:160px;width:160px;">';?> 
-                            </span>
+        <div class="row">
+          <div class="col-lg-12">
+            <section class="panel">
+              <header class="panel-heading">
+               Saisie produit
+              </header>
+              <div class="panel-body">
+                <div class="form">
+    <form class="form-validate form-horizontal" id="feedback_form" method="POST" action="fonction/fonctionAjoutProduit.php" enctype="multipart/form-data">
+                    <div class="form-group ">
+                      <label for="codeproduit" class="control-label col-lg-2">Code Produit <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class="form-control" id="codeproduit" name="codeproduit" minlength="5" type="text" required />
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="designation" class="control-label col-lg-2">Designation<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class="form-control " id="designation" type="text" name="designation" required />
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="prix" class="control-label col-lg-2">Prix en Ariary<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class="form-control " id="prix" type="number" name="prix" required/>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="quantite" class="control-label col-lg-2">Quantite <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class="form-control" id="subject" name="quantite" minlength="1" type="text" required />
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="category" class="control-label col-lg-2">Fammille<span class="required">*</span></label>
 
-                            <div class="space space-4" style="margin-top: 20px; font-size:18px;"></div>
-                                
-                            </a>
-                        </div>
+                      <div class="col-lg-3">      
+                  <select class="form-control famille" name="famille" placeholder="Cathegory" >
+                     <option>AUTRES</option>
+                     <option>BEAUTE</option>
+                     <option>BOISSON</option>
+                     <option>DEO & PARFUM</option>
+                     <option>HYGIENE BUCO-DENTAIRE</option>
+                     <option>HYGIENE CORPORELLE</option>
+                     <option>LESSIVE</option>
+                     <option>SOINS CAPILLAIRE</option>
+                     <option>SOINS VISAGE</option>  
+                  </select>     
 
-                        <div class="col-xs-4 col-sm-5">
-                            <h4 class="blue">
-                                <span class="middle">
-                                  <b><?php  echo " ".$reponse['Nom']; ?></b>
-                                </span>
-                            </h4>
-
-                            <div class="profile-user-info">
-                                <div class="profile-info-row">
-                                    <div class="profile-info-name">
-                                        <i class="middle ace-icon fa fa-phone-square bigger-150 green"></i> Contact
-                                    </div>
-
-                                    <div class="profile-info-value">
-                                        <?php echo '<b>'.$reponse['contact'].'</b>' ;?>
-                                    </div>
-                                </div>
-                                <div class="profile-info-row">
-                                    <div class="profile-info-name"> </div>
-
-                                    <div class="profile-info-value">
-                                        <span><i class="blue fa fa-facebook"></i>
-                                     <a href="<?php echo $reponse['liensurfacebook']; ?>>">consulter facebook</a>
-
-                                        </span>
-                                    </div>
-                                </div>
-
-                          <?php
-
-                            $sql="SELECT `idcomande`FROM `facture` WHERE `NumFact`='".$_GET['idfacture']."'";
-              $fact=$main->fetch($sql);
-              $sql="SELECT * FROM `livraison` WHERE `idcomand`='". $fact['idcomande']."'";
-              $livre=$main->fetch($sql);
-                          ?>     
-                             </div>
-                        </div><!-- /.col -->
-
-                             <div class="col-xs-3 col-sm-3">
-                              <div style="overflow:hidden;width: 350px;height: 400px;"><iframe width="350" height="400" src="https://maps.google.com/maps?width=350&amp;height=400&amp;hl=en&amp;q=<?php echo $livre['ville'];?>%2C<?php echo $livre['qartieur'];?>%2C<?php echo $livre['lieudelivraison'];?>%2CMadagascar+(Titre)&amp;ie=UTF8&amp;t=k&amp;z=17&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div><small><a href="https://embedgooglemaps.com/es/">https://embedgooglemaps.com/es/</a></small></div><div><small><a href="http://botonmegusta.org/">Boton megusta</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
-
-
-
-                             </div>
+                      </div>
+                    <label for="category" class="control-label col-lg-2">Groupe<span class="required">*</span></label>
+                      <div class="col-lg-3">      
+                        <select class="form-control groupe" name="groupe">
                         
-                    </div><!-- /.row -->
-      
-
-  
-
-              <table class="table table-striped table-advance table-hover" style="margin-top: 60px;">
-                <tbody>
-                  <tr>
-                    <th> Nom du livreur</th>
-                    <th> Date de livraison</th>
-                    <th> Heure de livraison </th>
-                    <th> Lieu de livraison</th>
-                    <th> Statue</th>
-                    
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <?php
-              $sql="SELECT `idcomande`FROM `facture` WHERE `NumFact`='".$_GET['idfacture']."'";
-              $fact=$main->fetch($sql);
-              $sql="SELECT * FROM `livraison` WHERE `idcomand`='". $fact['idcomande']."'";
-              $livre=$main->fetch($sql);
-               echo $livre['Nomlivreur'];
-                      ?>
-                    </td>
-                    <td><?php echo $livre['datediflivre'];?></td>
-                    <td><?php echo "Entre ".$livre['heurlivredifdebut']." et ".$livre['heurlivrediffin'];?></td>
-                    
-                   
-                    <td>
-                      <?php echo $livre['ville']." , ".$livre['qartieur']." , ".$livre['lieudelivraison'];?>
-                    </td>
-                    <td>
-                      <?php echo $livre['statut'];?>
-                        
-                      </td>
-                  </tr>
-                 
-                  
-                </tbody>
-              </table>
-        
+                        </select>
+                      </div>
 
 
 
 
-
-          
-        <?php
- $sql='SELECT `idcomande` FROM `facture` WHERE `NumFact`="'.$_GET['idfacture'].'"';
- $reponse=$main->fetchAll($sql);
-        ?>
-  <table class="table table-striped table-advance table-hover"  style="border:solid 1px #dbdbdb;margin-top: 10px;">
-                  <thead class="thead">
-
-
-                    <tr>
-                      <th style="text-align: center;">Produit</th>
-                      <th style="text-align: center;">Prix en Ariary</th>
-                      <th style="text-align: center;">Quantite</th>
-                      <th style="text-align: center;">Total en Ariary</th>
-                      <th>Aperçu</th>
-                    </tr>
-                  </thead>
-                  <tbody class="tbody">
-<?php 
- foreach ($reponse as $reponse):
-  $sql="SELECT * FROM `comande` WHERE `idcomand`=".$reponse['idcomande'];
-  $rep1=$main->fetch($sql);
- ?>                    
-                    <tr>
-                      <td style="text-align: center;"><?php
-                      $sql="SELECT `designation`,`photoproduit`,`prix` FROM `produit` WHERE `codeproduit`='".$rep1['codeproduit']."'";
-                      $produit=$main->fetch($sql);
-                      echo $produit['designation'];
-                      ?></td>
-                      <td style="text-align: center;"><?php echo  number_format($produit['prix'], 2, ',', ' ');?></td>
-                      <td style="text-align: center;"><?php echo $rep1['quantite'];?></td>
-                      <td  style="text-align: center;" class="total"><?php $total=$produit['prix']*$rep1['quantite']; echo number_format($total, 2, ',', ' ');?></td>
-                      <td ><?php 
-                      echo '<img src="../../img/produit/'. $produit['photoproduit'].'" class="img-thumbnail" style="width:60px;">';
-                      ?></td>
+                    </div>
                      
-                      <?php
-                    
-                     
-                      $soustout+=$total;
-                    
-                       
-                      ?>
-                    </tr>
- <?php endforeach;?>
 
-                   <tr>
-                      <th style="text-align: center;">Emetteur : <?php
-                      $sql="SELECT `username` FROM `user` WHERE `matricule`='".$rep1['matriculeuser']."'";
-                      $repuser=$main->fetch( $sql);
-                      echo $repuser['username'];
-                      ?></th>
-                      <th style="text-align: center;"></th>
-                      <th style="text-align: center;">Sous total en Ariary</th>
-                      <th style="text-align: center;" class="contTotal">
-                        <?php
-                        echo number_format($soustout, 2, ',', ' ');
-                         ?>
-                      </th>
-                      <th></th>
-                    </tr>                    
-                  </tbody>
-                </table>
-      </div>
-    </div>
-
-  </div>
-</div>
+                     <div class="form-group ">
+                      <label for="quantite" class="control-label col-lg-2">Description
+<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                       <textarea class="form-control" rows="5" name="description" required></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="quantite" class="control-label col-lg-2">Ingrédient 
+<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                       <textarea class="form-control" rows="5" name="ingredient" ></textarea>
+                      </div>
+                    </div>
+                     <div class="form-group ">
+                      <label for="quantite" class="control-label col-lg-2">Conseil d'utilisation<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <textarea class="form-control" rows="5" id="comment" name="ModeUtilisation" required></textarea>
+                      </div>
+                    </div>
 
 
 
-     
+                   <div class="form-group ">
+                      <label for="image" class="control-label col-lg-2">Argument et Objection (PDF)<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                       <input type="file" name="pdf">
+                      </div>
+                    </div>
 
+
+                    <div class="form-group ">
+                      <label for="image" class="control-label col-lg-2">Photo du produit<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                       <input type="file" name="image">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Enregistrement</button>
+                      </div>
+                    </div>
+                  </form>
+                
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </section>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    list();
+    $('.famille').on('change',function(){
+         list();
+    });
+    function list(){
+      var famille=$('.famille').val();
+      $.post('fonction/cat.php',{famille:famille},function(data){
+           $('.groupe').empty().append(data);
+      });
+    }
+  });
+</script>
 

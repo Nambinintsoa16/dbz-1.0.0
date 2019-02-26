@@ -18,29 +18,29 @@
   <label class="control-label col-lg-2" for="inputSuccess">Nom du client<span class="required">*</span></label>
         <div class="col-lg-10">
             <div class="row">
-                <div class="col-lg-4">
-                  <input type="text" class="form-control cherche client select-client" id="client">
+                <div class="col-lg-7">
+                  <input type="text" class="form-control cherche client select-client" id="client" style="width: 350px;">
                 </div>
                 <div class="col-lg-4" style="text-align: right;">
-                  <span class="image">
-                  </span>
+                  <div class="image img-thumbnail" style="width: 150px;height: 150px;text-align:center;padding: auto auto;">
+                    <h5 style="margin-top:45%; ">Photo client</h5> 
+                  </div>
                   <span class="idclient"></span>
                 </div>
                  
             </div>
         </div>
    </div>
-</fieldse> 
    <fieldset class="border p-2">
      <legend  class="w-auto">Livraison</legend> 
     <div class="form-group ">
-        <label for="datecommande" class="control-label col-lg-2">Date de commande<span class="required"> *</span>
+        <label for="datecommande" class="control-label col-lg-2 datecommande collapse"><?php
+date_default_timezone_set ("Europe/Moscow");
+         $dt = new dateTime();
+        $date = $dt->format("d/m/Y");
+        echo $date; ?>
         </label>
-          <div class="col-lg-3">
-            <input class="form-control datecommande" id="datecommande" type="date" name="datecommande" style="width:223px;" />
-          </div>
-      </div>
-
+     </div>     
    <div class="form-group">
       <label class="control-label col-lg-2" for="inputSuccess">Dade de livrason<span class="required"> *</span></label>
         <div class="col-lg-10">
@@ -95,16 +95,25 @@
         <label for="ccomment" class="control-label col-lg-2">Choix du produit</label>
       <div class="col-lg-3">
         
-       <select name="codeproduit" class="form-control selectProduit">
-          <?php 
-              $sql="SELECT `designation` FROM `categoryproduit` ";
-                $reponse=$main->fetchAll($sql);
-                   foreach ($reponse as $reponse): 
-          ?>
-              <option>
-              <?php echo $reponse['designation']; ?>
-              </option>
-          <?php endforeach;?>
+        <select class="form-control famille" name="famille" placeholder="Cathegory" >
+                     <option>AUTRES</option>
+                     <option>BEAUTE</option>
+                     <option>BOISSON</option>
+                     <option>DEO & PARFUM</option>
+                     <option>HYGIENE BUCO-DENTAIRE</option>
+                     <option>HYGIENE CORPORELLE</option>
+                     <option>LESSIVE</option>
+                     <option>SOINS CAPILLAIRE</option>
+                     <option>SOINS VISAGE</option>  
+          </select> 
+
+        </div>
+
+
+        <div class="col-lg-3 ">
+        
+       <select name="codeproduit" class="form-control groupe">
+        
         </select>
 
         </div>
@@ -113,7 +122,7 @@
         <input type="cherche" name="" id="recherche" class="form-control">
         </div>
 
-        <div class="col-lg-2">
+        <div class="col-lg-1">
         <button class="btn btn-primary validproduit" style="display: inline;"><i class="fa fa-plus"></i></button>
         </div>
 
@@ -128,12 +137,15 @@
             <table class="table">
               <thead>
                 <tr>
-                      <th>Code produit</th>
-                      <th>Désignation</th>
-                      <th>Prix Unitaire</th>
-                      <th>Quantite</th>
-                      <th>Total en Ar </th>
-                      <th>Aperçu</th>
+                      <th style="border-left: solid #fff 1; text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width:100px;">Code produit</th>
+                      <th style="border-left: solid #fff 1; text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width:400px;">Désignation</th>
+                      <th style="border-left: solid #fff 1; text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width:100px; ">Prix Unitaire</th>
+                      <th style="border-left: solid #fff 1; text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width:80px;">Quantite</th>
+                      <th style="border-left: solid #fff 1; text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width:100px">Total en Ar </th>
+                      <th style="border-left: solid #fff 1; text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width:100px;">Aperçu</th>
+                      <th style="border-left: solid #fff 1; text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width:60px"></th>
+
+
                 </tr>   
               </thead>
                <tbody class="tbody">  
@@ -151,7 +163,7 @@
                 </th>
                       <th colspan="2"style="text-align: right;">
                       <button type="submit" class="btn btn-primary btn-test">Valider</button>
-                      <button class="btn btn-primary print"><i class="fa fa-print"></i> Inprimer</button>
+                     
                       </th>
                 </tr>
           </tfoot>
@@ -171,29 +183,48 @@ $(document).ready(function(){
 
 
   var cat;
-  $('.selectProduit').on('change',function(){
-       cat=$('.selectProduit').val();
+  list();
+    $('.famille').on('change',function(){
+         list();
+    });
+    function list(){
+      var famille=$('.famille').val();
+      $.post('fonction/cat.php',{famille:famille},function(data){
+           $('.groupe').empty().append(data);
+      });
+    }
+
+  $('.groupe').on('change',function(){
+       cat=$('.groupe').val();
   });
      
  
 
   $('#recherche').autocomplete({
     source : function(request, response) {
-      var cat=$('.selectProduit').val();
-      $.get('fonction/fonctionliste.php',{term:request.term,cat:cat},function(data){
+      var groupe=$('.groupe').val();
+      var famille=$('.famille').val();
+      
+      $.get('fonction/fonctionliste.php',{term:request.term,groupe:groupe,famille:famille},function(data){
           response(data);
        },'json');
     }  
+  });
+  $('#client').on('focus',function(){
+      if($(this).val()!=""){
+        $(this).val("");
+        $('.image').empty().append();
+      }
   });
   $('#client').autocomplete({
        source : 'fonction/fonctionlisteclien.php',
     select : function(event, ui){ 
       $.post('fonction/image.php',{image:ui.item},function(data){
-         $('.image').empty().append('<img class="img-thumbnail" style="width:80px;" src="../img/photoclient/'+data.image+'">');
+         $('.image').empty().append('<img style="width:100%;height:100%;" src="../img/photoclient/'+data.image+'">');
       },'json'); 
     }
   });
 });
-
+ 
  </script>  
  <script type="text/javascript" src="../js/fonctionenregistrementvent.js"></scrip>

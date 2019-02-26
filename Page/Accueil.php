@@ -132,18 +132,22 @@ if (!isset($_SESSION['login'])){
 
             </ul>
 </li>         
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
+          <li class="sub">
+            <a href="?page=vente" class="">
                     <i class="fa fa-users"></i>
                           <span>Commande</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-            <ul class="sub">
-              <li><a class="" href="?page=vente">Passe commande</a></li>
-              <li><a class="" href="?page=commandedujour">Commande du jour</a></li>
-
-            </ul>
+           
 </li>    
+ <li class="sub">
+            <a href="?page=menulivre" class="">
+                    <i class="fa fa-users"></i>
+                          <span>Livraison</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+           
+</li>   
 
 <li class="sub-menu">
             <a href="javascript:;" class="">
