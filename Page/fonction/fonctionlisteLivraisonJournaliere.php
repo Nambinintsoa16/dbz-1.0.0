@@ -1,7 +1,9 @@
 <?php 
 include_once('class/main.php');
+$datejour = new dateTime();
+$dtnow = $datejour->format("Y-m-d");
 $main=new main();
-            $sql="SELECT * FROM `livraison` where statut='reporter' ";
+            $sql="SELECT * FROM `livraison` where statut='Confirmer' where datedelivraison=$dtnow ";
             $reponse=$main->fetchAll($sql);
             ?>  <table class="table table-striped table-advance table-hover" id="tableau">
               <thead>
@@ -16,9 +18,10 @@ $main=new main();
                     <th>Status</th>
                     <th>Id commande</th>
                     <th>Remarque </th>
+                    <th> </th>
                   </tr>
               </thead>
-                <tbody class="LivraisonReporter">  
+                <tbody class="listLivraisonConfirmée">  
              <?php foreach ($reponse as $reponse):?> 
                   <tr>
                     <td><?php echo $reponse['Nomlivreur'];?> </td>
@@ -32,19 +35,19 @@ $main=new main();
                     <td><?php echo $reponse['idcomand'];?></td>
                   </tr>
                 <?php endforeach;?>  
- </tbody>
-        </table>  
+              </tbody>
+              </table>  
+
       <script type="text/javascript">
         $(document).ready(function(){
            $('.btn-danger').on('click',function(event){
             event.preventDefault();
           $.get($(this).attr('href'),function(data){
-            $.post('fonction/fonctionlisteLivraisonReporter.php',function(data){
-            $('.LivraisonReporter').empty().append(data);
+            $.post('fonction/fonctionlisteLivraisonJournaliere.php',function(data){
+            $('.listLivraisonJournaliere').empty().append(data);
                 });
              });
-             $('#tableau').DataTable();
          });
-          
+         $('#tableau').DataTable();
         });
       </script>

@@ -15,13 +15,8 @@ $main=new main();?>
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <section class="panel">
-            <table class="table table-striped table-advance table-hover" id="tableau">
-                <tbody class="LivraisonReporter">
-
-           
-                </tbody>
-              </table> 
+            <section class="panel"  class="LivraisonReporter">
+            
             </section>
           </div>
         </div>
@@ -35,6 +30,7 @@ $main=new main();?>
             $('.LivraisonReporter').empty().append(data); 
            
           });
+        
         }
       });
     </script>

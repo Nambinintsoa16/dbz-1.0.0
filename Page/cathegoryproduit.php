@@ -10,9 +10,6 @@
             </ol>
           </div>
         </div>
-        
-
-
           <div class="row">
           <div class="col-lg-12">
             <section class="panel">
@@ -68,7 +65,7 @@
           </tr>
         </thead>
      <tbody class="tableCat">     
-      </tbody>
+      </tbody>info@onetoone.mg
      </table>
               
             </section>
@@ -77,10 +74,6 @@
 
               </div>
             </section>
-
-
-
-
 
       </section>
     </section>
