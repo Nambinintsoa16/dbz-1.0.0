@@ -93,7 +93,7 @@ $date=$dt->format("Y-m-d");
           <a href="?page=livraison">
             <div class="info-box blue-bg">
               <i class="fa fa-shopping-cart"></i>
-              <div class="count" >Livraison</div>
+              <div >Confirmer livraison</div>
                <div style="font-size: 28px; color: #fff;font-weight: bold;">
                <?php
                $sql="SELECT `NumFact` FROM `facture` WHERE `datelivre`='".$date."'";
