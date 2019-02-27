@@ -25,7 +25,7 @@ $date=$dt->format("Y-m-d");
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <a href="?page=livraison">
             <div class="menubox" style="background-color:#03a5cc;min-height:150px; color: #fff">
-            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:175px;opacity:0.4"></i>
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:50px;margin-top:30px;margin-left:150px;opacity:0.4"></i>
                <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
                <?php
                $sql="SELECT `NumFact` FROM `facture` WHERE `datelivre`='".$date."'";
@@ -54,7 +54,7 @@ $date=$dt->format("Y-m-d");
            <a href="?page=LivraisonAnnulle">
             <div class="" style="background-color:#00a65a;min-height:150px; color: #fff" >
               
-            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:175px;opacity:0.4"></i>
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:50px;margin-top:30px;margin-left:150px;opacity:0.4"></i>
         
               <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
              
@@ -77,7 +77,7 @@ $date=$dt->format("Y-m-d");
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <a href="?page=LivraisonEffectuée">
             <div style="background-color:#f39c11;min-height:150px; color: #fff">
-            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:175px;opacity:0.4"></i>
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:50px;margin-top:30px;margin-left:150px;opacity:0.4"></i>
         
                <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
               
@@ -100,7 +100,7 @@ $date=$dt->format("Y-m-d");
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <a  href="?page=livraison">
             <div style="background-color:#de4b39;min-height:150px; color: #fff">
-            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:175px;opacity:0.4"></i>
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:50px;margin-top:30px;margin-left:150px;opacity:0.4"></i>
         
              
             <div  style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
@@ -137,7 +137,7 @@ $date=$dt->format("Y-m-d");
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" >
           <a href="?page=Livresondujour">
             <div style="background-color:#3c6980;min-height:150px; color: #fff">
-            <i class="fa fa-calendar" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:475px;opacity:0.4"></i>
+            <i class="fa fa-calendar" style="z-index:3;position:absolute;font-size:50px;margin-top:30px;margin-left:400px;opacity:0.4"></i>
          
                <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
                   5
@@ -152,7 +152,7 @@ $date=$dt->format("Y-m-d");
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
            <a href="?page=listedesproduit"> 
             <div style="background-color:#00a38e;min-height:150px; color: #fff">
-            <i class="fa fa-calendar" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:475px;opacity:0.4"></i>
+            <i class="fa fa-calendar" style="z-index:3;position:absolute;font-size:50px;margin-top:30px;margin-left:400px;opacity:0.4"></i>
          
               <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
               <?php
