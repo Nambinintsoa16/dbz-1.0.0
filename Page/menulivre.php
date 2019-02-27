@@ -16,12 +16,17 @@ $date=$dt->format("Y-m-d");
             </div>
         </div>
         <div class="row">
+          <div class="col-md-12">
+               <img src="../img/livraison910.jpg" alt="" height="400" width="100%" style="background-size:cover;object-fit: cover;">
+          </div>
+            
+        </div>
+        <div class="row" style="margin-top:30px;">
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <a href="?page=livraison">
-            <div class="info-box blue-bg">
-              <i class="fa fa-shopping-cart"></i>
-              <div>Livraison en attente</div>
-               <div style="font-size: 28px; color: #fff;font-weight: bold;">
+            <div class="menubox" style="background-color:#03a5cc;min-height:150px; color: #fff">
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:175px;opacity:0.4"></i>
+               <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
                <?php
                $sql="SELECT `NumFact` FROM `facture` WHERE `datelivre`='".$date."'";
                $resultfact=$main->fetchAll($sql);
@@ -38,20 +43,30 @@ $date=$dt->format("Y-m-d");
               }
                ?>
                </div>
+               <div style="padding-left:20px;margin-bottom:30px">Livraison en attente </div>
+               <div style="z-index:#fff;height:30px;background:#038cae">
+                <span style="position:absolute;padding-top:5px !important;padding-left:20px;text-align:center">Plus d'info &nbsp; <i class="fa fa-arrow-circle-right"></i></span>
+              </div>
             </div>
             </a>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
            <a href="?page=LivraisonAnnulle">
-            <div class="info-box brown-bg">
-              <i class="fa fa-cubes"></i>
-              <div>Annulée</div>
-              <div style="font-size: 28px; color: #fff;font-weight: bold;">
+            <div class="" style="background-color:#00a65a;min-height:150px; color: #fff" >
+              
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:175px;opacity:0.4"></i>
+        
+              <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
+             
               <?php
               $sql="SELECT * FROM `produit` ";
               $count=$main->test($sql);
               echo $count;
               ?>
+              </div>
+              <div style="padding-left:20px;margin-bottom:30px">Annulée</div>
+              <div style="z-index:#fff;height:30px;background:#018d4e">
+                <span style="position:absolute;padding-top:5px !important;padding-left:20px;text-align:center">Plus d'info &nbsp; <i class="fa fa-arrow-circle-right"></i></span>
               </div>
             </div>
             <a>
@@ -61,10 +76,11 @@ $date=$dt->format("Y-m-d");
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <a href="?page=LivraisonEffectuée">
-            <div class="info-box dark-bg">
-              <i class="fa fa fa-users"></i>
-              <div >Livrée</div>
-               <div style="font-size: 28px; color: #fff;font-weight: bold;">
+            <div style="background-color:#f39c11;min-height:150px; color: #fff">
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:175px;opacity:0.4"></i>
+        
+               <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
+              
                <?PHP
                   $sql="SELECT `id` FROM `client`";
                   $countClient=$main->test($sql);
@@ -72,30 +88,23 @@ $date=$dt->format("Y-m-d");
 
                ?>
                </div>
+               <div  style="padding-left:20px;margin-bottom:30px">Livrée</div>
+               <div style="z-index:#fff;height:30px;background:#d08510">
+                <span style="position:absolute;padding-top:5px !important;padding-left:20px;text-align:center">Plus d'info &nbsp; <i class="fa fa-arrow-circle-right"></i></span>
+              </div>
             </div>
             <a>
           </div>
           
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <a href="?page=Livresondujour">
-            <div class="info-box green-bg">
-              <i class="fa fa-calendar"></i>
-              <div>Calendrier</div>
-              
-            </div>
-          </div>
+            <a  href="?page=livraison">
+            <div style="background-color:#de4b39;min-height:150px; color: #fff">
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:175px;opacity:0.4"></i>
         
-           </a>
-        </div> 
-<div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-          <a href="?page=livraison">
-            <div class="info-box blue-bg">
-              <i class="fa fa-shopping-cart"></i>
-              <div >Confirmer livraison</div>
-               <div style="font-size: 28px; color: #fff;font-weight: bold;">
-               <?php
+             
+            <div  style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
+            <?php
                $sql="SELECT `NumFact` FROM `facture` WHERE `datelivre`='".$date."'";
                $resultfact=$main->fetchAll($sql);
                if($resultfact){
@@ -110,55 +119,54 @@ $date=$dt->format("Y-m-d");
                 echo $nbfacture;
               }
                ?>
+          </div>
+            <div  style="padding-left:20px;margin-bottom:30px">Confirmer livraison</div>
+               <div style="z-index:#fff;height:30px;background:#bb4031">
+                <span style="position:absolute;padding-top:5px !important;padding-left:20px;text-align:center">Plus d'info &nbsp; <i class="fa fa-arrow-circle-right"></i></span>
+              </div>
+              
+            </div>
+          </div>
+        
+           </a>
+                      
+
+        </div> 
+            </div>
+<div class="row" style="margin-top:30px">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" >
+          <a href="?page=Livresondujour">
+            <div style="background-color:#3c6980;min-height:150px; color: #fff">
+            <i class="fa fa-calendar" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:475px;opacity:0.4"></i>
+         
+               <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
+                  5
                </div>
+               <div style="padding-left:20px;margin-bottom:50px">Calendrier</div>
+               <div style="z-index:#fff;height:30px;background:#33596c">
+                <span style="position:absolute;padding-top:5px !important;padding-left:20px;text-align:center">Plus d'info &nbsp; <i class="fa fa-arrow-circle-right"></i></span>
+              </div>
             </div>
             </a>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
            <a href="?page=listedesproduit"> 
-            <div class="info-box brown-bg">
-              <i class="fa fa-cubes"></i>
-              <div class="count">Produit</div>
-              <div style="font-size: 28px; color: #fff;font-weight: bold;">
+            <div style="background-color:#00a38e;min-height:150px; color: #fff">
+            <i class="fa fa-calendar" style="z-index:3;position:absolute;font-size:70px;margin-top:30px;margin-left:475px;opacity:0.4"></i>
+         
+              <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
               <?php
               $sql="SELECT * FROM `produit` ";
               $count=$main->test($sql);
               echo $count;
               ?>
               </div>
+              <div class="count"  style="padding-left:20px;margin-bottom:50px">Produit</div>
+              <div style="z-index:#fff;height:30px;background:#008a7a">
+                <span style="position:absolute;padding-top:5px !important;padding-left:20px;text-align:center">Plus d'info &nbsp; <i class="fa fa-arrow-circle-right"></i></span>
+              </div>
             </div>
             <a>
           
           </div>
-       
-
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-          <a href="?page=listedesclient"> 
-            <div class="info-box dark-bg">
-              <i class="fa fa fa-users"></i>
-              <div class="count">Client</div>
-               <div style="font-size: 28px; color: #fff;font-weight: bold;">
-               <?PHP
-                  $sql="SELECT `id` FROM `client`";
-                  $countClient=$main->test($sql);
-                  echo  $countClient;
-
-               ?>
-               </div>
             </div>
-            <a>
-          </div>
-          
-
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <a href="?page=Livresondujour">
-            <div class="info-box green-bg" style="height: 230px;">
-              <i class="fa fa-calendar"></i>
-              <div class="count">Calendrier</div>
-              
-            </div>
-            <!--/.info-box-->
-          </div>
-          <!--/.col-->
-           </a>
-        </div> 
