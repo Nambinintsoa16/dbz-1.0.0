@@ -86,7 +86,8 @@ $date=$dt->format("y-m-d");
                     </td>
                     <td></td>
                     <td>
-                 <a class="btn btn-info" href="?page=commandeclient&idfacture=<?php echo $facture;?>"> <i class="fa fa-info"></i>   
+                 <a class="btn btn-info" href="?page=commandeclient&idfacture=<?php echo $facture;?>"> <i class="fa fa-info"></i> 
+              <a class="btn btn-primary" href="?page=confirmationlivreson&idfacture=<?php echo $facture;?>"> <i class="fa fa-edit"></i>   
 
                     </td>
                   

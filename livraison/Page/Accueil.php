@@ -173,10 +173,7 @@ if (!isset($_SESSION['login'])){
 
             </ul>
 </li>    
-
-        
-
-        </ul>
+      </ul>
        
       </div>
     </aside>
