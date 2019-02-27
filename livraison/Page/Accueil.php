@@ -138,6 +138,9 @@ if (!isset($_SESSION['login'])){
             </ul>
           </li>
 
+
+
+
 <li class="sub-menu">
             <a href="javascript:;" class="">
                     <i class="fa fa-users"></i>
@@ -159,22 +162,17 @@ if (!isset($_SESSION['login'])){
             </ul>
 </li>    
 
-<li class="sub-menu">
-            <a href="javascript:;" class="">
+<li class="sub">
+            <a href="?page=Livraisonmenu" class="">
                     <i class="fa fa-users"></i>
                           <span>Livraison</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-            <ul class="sub">
-              <li><a class="" href="?page=livraison">Livréson du jour </a></li>
-              <li><a class="" href="?page=LivraisonEffectuée">Livrée</a></li>
-              <li><a class="" href="?page=LivraisonReporter">Reportée</a></li>
-              <li><a class="" href="?page=LivraisonAnnulle">Annulée</a></li>
 
-            </ul>
 </li>    
       </ul>
-       
+          </li>
+        </ul>
       </div>
     </aside>
         <?php 
