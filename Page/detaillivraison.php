@@ -7,7 +7,10 @@ $DateTime=$dt->format('Y-m-d');
  if(isset($_GET['idclient'])){
 $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user` ='".$_SESSION['login']['matricule']."' AND `idclient`='".$_GET['idclient']."' AND `Statu`='on'";
  $repnse=$main->fetchAll($sql);
+ 
  }
+
+
  ?>
  <section id="main-content">
       <section class="wrapper">
@@ -20,8 +23,7 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
             </ol>
           </div>
         </div>
- 
-              
+         
        <div class="panel">
      
                          <?php
@@ -31,7 +33,7 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
                             
                                       
             
-             $sql ='UPDATE `facture` SET `vu`="'.$_SESSION['login']['matricule'].'" WHERE `NumFact` ="'.$_GET['idfacture'].'"';
+             $sql ='UPDATE `facture` SET `vulivraison`="'.$_SESSION['login']['matricule'].'" WHERE `NumFact` ="'.$_GET['idfacture'].'"';
              $main->fetch($sql);         
                                         ?>
                            
@@ -94,9 +96,45 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
                         </div><!-- /.col -->
                     </div><!-- /.row -->
 
+<table class="table table-striped table-advance table-hover" style="margin-top: 60px;">
+                <tbody>
+                  <tr>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width: 250px;"> Nom du livreur</th>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff; width: 200px"> Date de livraison</th>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width: 267px;"> Heure de livraison </th>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;"> Lieu de livraison</th>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width: 142px;"> Statue</th>
+                    
+                    
+                  </tr>
+                  <tr>
+                    <td style="text-align: center;">
+                      <?php
+              $sql="SELECT `idcomande`FROM `facture` WHERE `NumFact`='".$_GET['idfacture']."'";
+              $fact=$main->fetch($sql);
+              $sql="SELECT * FROM `livraison` WHERE `idcomand`='". $fact['idcomande']."'";
+              $livre=$main->fetch($sql);
+               echo $livre['Nomlivreur'];
+                      ?>
+                    </td>
+                    <td style="text-align: center;"><?php echo $livre['datediflivre'];?></td>
+                    <td style="text-align: center;"><?php echo "Entre ".$livre['heurlivredifdebut']." et ".$livre['heurlivrediffin'];?></td>
+                    
+                   
+                    <td style="text-align: center;">
+                      <?php echo $livre['ville']." , ".$livre['qartieur']." , ".$livre['lieudelivraison'];?>
+                    </td>
+                    <td style="text-align: center;">
+                      <?php echo $livre['statut'];?>
+                        
+                      </td>
+                  </tr>
+                 
+                  
+                </tbody>
+              </table>
 
-
-          
+   
         <?php
  $sql='SELECT `idcomande` FROM `facture` WHERE `NumFact`="'.$_GET['idfacture'].'"';
  $reponse=$main->fetchAll($sql);
@@ -106,7 +144,7 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
 
 
                     <tr>
-                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Produit</th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width: 250px;">Produit</th>
                       <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Prix en Ariary</th>
                       <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Quantite</th>
                       <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Total en Ariary</th>
@@ -142,22 +180,20 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
                     </tr>
  <?php endforeach;?>
 
-                   <tr style="">
-                      <th style="text-align: center;"><span style="color: #000">Emetteur :</span>  <span style="background-color: #007bff ;padding: 5px;color:white"><?php
+                   <tr>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Emetteur : <?php
                       $sql="SELECT `username` FROM `user` WHERE `matricule`='".$rep1['matriculeuser']."'";
                       $repuser=$main->fetch( $sql);
                       echo $repuser['username'];
-
-                      ?></span></th>
-                      <th style="text-align: center;"></th>
-                      <th style="text-align: center;color: #000;">Sous total en Ariary</th>
-                      <th style="text-align: center;" class="contTotal">
-                       <span style="background-color: #007bff ;padding: 5px;color:white"> <?php
-                        echo number_format($soustout, 2, ',', ' ')." Ar";
+                      ?></th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;"></th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Sous total en Ariary</th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;" class="contTotal">
+                        <?php
+                        echo number_format($soustout, 2, ',', ' ');
                          ?>
-                         </span>
                       </th>
-                      <th></th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;"></th>
                     </tr>                    
                   </tbody>
                 </table>
@@ -166,103 +202,5 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
 
 </div>
         </div>
- <div class="row confirmform">
-          <div class="col-lg-12">
-            <section class="panel">
-              <header class="panel-heading" style="background-color: #7d8997;color: #fff;">
-                Confirmation de commande
-                <?php 
-                      $sql="SELECT * FROM `livraison` WHERE `idcomand`='".$rep1['idcomand']."'";
-                      $livre=$main->fetch( $sql);
-                       ?>
-              </header>
-              <div class="panel-body">
-                <form class="form-horizontal"> 
-             <div class="col-md-12">  
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Date de livraison</label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control datelivre" class="col-md-10" value= <?php echo $livre['datedelivraison'] ?> >
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                   <label class="col-sm-2 control-label">Heure de livraison</label>
-                    <div class="col-sm-5">
-                      <input type="Time" class="form-control debut" class="col-md-12" value= <?php echo $livre['debut'] ?>>
-                    </div>
-                    <label class="col-sm-1 control-label "> à </label>
-                    <div class="col-sm-4">
-                      <input type="Time" class="form-control fin" class="col-md-12" value= <?php echo $livre['fin'] ?>>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Nom du livreur</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control livreur" class="col-md-12"  value= >
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Remarque</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control remarque"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-md-12">
-                     <div class="col-md-12" style="margin-top: 15px;">
-                <?php echo '<a class="btn btn-default valider pull-right " style="width:175px;height:40px;background:#28a745;color:white;font-weight:bold"   href="fonction/fonctionvente.php?idfacture='.$_GET['idfacture'].'"><span style="background:#2980b9;height:100%;width:150px;"></span>  Valider la commande</a>';?>
-                     </div>
-                 
-                </div>
-                  </div>
-               </div>   
-              </div>
-                </form>
-              </div>
-            </section >            
-               
-<script type="text/javascript">
-
-  $(document).ready(function(){
-
-   $('form').on('submit',function(event){
-        event.preventDefault();
-        alert("veillez appuyé sur l'un des trois buttons");
-   });
 
 
-    $('.valider').on('click',function(event){
-        event.preventDefault();
-        var idfacture=<?php echo "'".$_GET['idfacture']."'";?>;
-        var livreur=$('.livreur').val();
-        var datelivre=$('.datelivre').val();
-        var debut=$('.debut').val();
-        var fin=$('.fin').val();
-        var remarque=$('.remarque').val();
-    $.post($(this).attr('href'),{idfacture:idfacture,livreur:livreur,datelivre:datelivre,debut:debut,fin:fin,remarque:remarque},function(data){
-          $.post('fonction/confirmationlivre.php',{idfacture:idfacture},function(data){
-                $('.confirm').empty().append(data);
-                $('.confirmform').addClass('collapse');
-                $.post('fonction/fonctionbadlivre.php',function(data){
-                $('.livredrop').empty().append(data.badge);
-                alert('Commande confimer');
-             },'json');
-
-                
-            
-          });
-      });
-        
-      
-
-    });
-
-   
-    
-    
-    
-  });
-</script>

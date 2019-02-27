@@ -1,7 +1,7 @@
 <?php
 include_once('fonction/class/main.php');
 $main=new main();
-
+ $soustout=0;
 if(isset($_GET['idfacture'])){
 ?>
 <section id="main-content">
@@ -74,90 +74,114 @@ $client=$main->fetch($sql);
 					</div>
 				</div>	
 		</div>
-		<div class="row detail_commande">
-			<div class="col-md-12 ">
-				<h3 class="client_name">Detail de commande</h3> <br>
-				<table width="100%">
-					<thead>
-						<tr>
-							<th style="text-align: center;">Date</th>
-							<th style="text-align: center;">Produit</th>
-							<th style="text-align: center;">Montant</th>
-							<th style="text-align: center;">Lieu de livraison</th>
-							<th style="text-align: center;">STATUS</th>
-						</tr>
-					</thead>
-	
-					<tbody>
-						<tr class="ligne1">
-							<td>
-							<?php
-	$sql="SELECT `datedefacture` FROM `facture` WHERE `NumFact` LIKE '".$_GET['idfacture']."'";
-	$datefact=$main->fetch($sql);
-	echo $datefact['datedefacture'];
-							?></td>
-							<td>
-<?php
-$sql="SELECT `idcomande` FROM `facture` WHERE `NumFact` LIKE '".$_GET['idfacture']."'";
-$idcomande=$main->fetchALL($sql);
-foreach ($idcomande as $idcomande){
-	$sql="SELECT `codeproduit`,`quantite` FROM `comande` WHERE `idcomand` LIKE '".$idcomande['idcomande']."'";
-	$codeproduit=$main->fetch($sql);
-	$sql="SELECT `designation` FROM `produit` WHERE `codeproduit` LIKE '".$codeproduit['codeproduit']."'";
-	$produit=$main->fetch($sql);
-	echo $codeproduit['quantite']." . ".$produit['designation']."<br/>";
-}
+<!-- debut -->
+<fieldset><legend>Detail livraison</legend>
+<table class="table table-striped table-advance table-hover" style="margin-top: 60px;">
+                <tbody>
+                  <tr>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width: 250px;"> Nom du livreur</th>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff; width: 200px"> Date de livraison</th>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width: 267px;"> Heure de livraison </th>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;"> Lieu de livraison</th>
+                    <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width: 142px;"> Statue</th>
+                    
+                    
+                  </tr>
+                  <tr>
+                    <td style="text-align: center;">
+                      <?php
+              $sql="SELECT `idcomande`FROM `facture` WHERE `NumFact`='".$_GET['idfacture']."'";
+              $fact=$main->fetch($sql);
+              $sql="SELECT * FROM `livraison` WHERE `idcomand`='". $fact['idcomande']."'";
+              $livre=$main->fetch($sql);
+               echo $livre['Nomlivreur'];
+                      ?>
+                    </td>
+                    <td style="text-align: center;"><?php echo $livre['datediflivre'];?></td>
+                    <td style="text-align: center;"><?php echo "Entre ".$livre['heurlivredifdebut']." et ".$livre['heurlivrediffin'];?></td>
+                    
+                   
+                    <td style="text-align: center;">
+                      <?php echo $livre['ville']." , ".$livre['qartieur']." , ".$livre['lieudelivraison'];?>
+                    </td>
+                    <td style="text-align: center;">
+                      <?php echo $livre['statut'];?>
+                        
+                      </td>
+                  </tr>
+                 
+                  
+                </tbody>
+              </table>
 
-?>
-
-							</td>
-							<td>
-								
-<?php
-$prix=0;
-$sql="SELECT `idcomande` FROM `facture` WHERE `NumFact` LIKE '".$_GET['idfacture']."'";
-$idcomande=$main->fetchALL($sql);
-foreach ($idcomande as $idcomande){
-	$sql="SELECT `codeproduit` FROM `comande` WHERE `idcomand` LIKE '".$idcomande['idcomande']."'";
-	$codeproduit=$main->fetch($sql);
-	$sql="SELECT `prix` FROM `produit` WHERE `codeproduit` LIKE '".$codeproduit['codeproduit']."'";
-	$produit=$main->fetch($sql);
-	$prix+=$produit['prix'];
-}
-echo $prix." Ar";
-?>
+   
+        <?php
+ $sql='SELECT `idcomande` FROM `facture` WHERE `NumFact`="'.$_GET['idfacture'].'"';
+ $reponse=$main->fetchAll($sql);
+        ?>
+  <table class="table"  style="border-top:solid 1px #dbdbdb;border-bottom:solid 1px #dbdbdb; margin-top: 10px;">
+                  <thead >
 
 
-							</td>
-				<td>
-					
+                    <tr>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;width: 250px;">Produit</th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Prix en Ariary</th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Quantite</th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Total en Ariary</th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Aperçu</th>
+                    </tr>
+                  </thead>
+                  <tbody class="tbody">
+<?php 
+ foreach ($reponse as $reponse):
+  $sql="SELECT * FROM `comande` WHERE `idcomand`=".$reponse['idcomande'];
+  $rep1=$main->fetch($sql);
+ ?>                    
+                    <tr>
+                      <td style="text-align: center;"><?php
+                      $sql="SELECT `designation`,`photoproduit`,`prix` FROM `produit` WHERE `codeproduit`='".$rep1['codeproduit']."'";
+                      $produit=$main->fetch($sql);
+                      echo $produit['designation'];
+                      ?></td>
+                      <td style="text-align: center;"><?php echo  number_format($produit['prix'], 2, ',', ' ');?></td>
+                      <td style="text-align: center;"><?php echo $rep1['quantite'];?></td>
+                      <td  style="text-align: center;" class="total"><?php $total=$produit['prix']*$rep1['quantite']; echo number_format($total, 2, ',', ' ');?></td>
+                      <td ><?php 
+                      echo '<img src="../img/produit/'. $produit['photoproduit'].'" class="img-thumbnail" style="width:60px;">';
+                      ?></td>
+                     
+                      <?php             
+                      $soustout+=$total;
 
-<?php
-$prix=0;
-$sql="SELECT `idcomande` FROM `facture` WHERE `NumFact` LIKE '".$_GET['idfacture']."'";
-$idcomande=$main->fetch($sql);
-$sql="SELECT `ville`,`lieudelivraison`,`qartieur` FROM `livraison` WHERE `idcomand` ='".$idcomande['idcomande']."'";
-$lieu=$main->fetch($sql);
-echo $lieu['ville'].' , '.$lieu['qartieur'].' , '.$lieu['lieudelivraison'];
+                      ?>
+                    </tr>
+ <?php endforeach;?>
 
-?>
+                   <tr>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Emetteur : <?php
+                      $sql="SELECT `username` FROM `user` WHERE `matricule`='".$rep1['matriculeuser']."'";
+                      $repuser=$main->fetch( $sql);
+                      echo $repuser['username'];
+                      ?></th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;"></th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;">Sous total en Ariary</th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;" class="contTotal">
+                        <?php
+                        echo number_format($soustout, 2, ',', ' ');
+                         ?>
+                      </th>
+                      <th style="text-align: center; background-color: #7d8997;color: #fff; border-left: 1px solid #fff;"></th>
+                    </tr>                    
+                  </tbody>
+                </table>
+      </div>
+    </div>
 
+</div>
+        </div>
 
-				</td>
-							<td>
-								<?php
-	$sql="SELECT `Statut` FROM `facture` WHERE `NumFact` LIKE '".$_GET['idfacture']."'";
-	$datefact=$main->fetch($sql);
-	echo $datefact['Statut'];
-							?>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>	
-		</div>
-
-
+<!--fin-->
+</fieldset>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -252,7 +276,7 @@ echo $lieu['ville'].' , '.$lieu['qartieur'].' , '.$lieu['lieudelivraison'];
     data: {
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [{
-            label: "Fréquence d'achat",
+            label: "bfjkdnjkd",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [0, 10, 5, 2, 20, 30, 45],
