@@ -36,9 +36,9 @@ $idclient="CLT-".$idtemp."-".$set[0]."-".$set['1'];
   	if ($resultat) {
  $qrcode=$idclient;    
  $datedenregestrement=date("Y-m-d h:n:s");
- $requetteAjout="INSERT INTO `gestiondevente`.`client` (`id`, `Nom`,`qrcode`, `trancedage`, `situationmatrimonial`, `occupation`, `identifientsurfacebook`, `liensurfacebook`, `contact`, `ville`, `quartier`, `sexe`, `photo`, `idclient`, `datedenregestrement`) VALUES (NULL, '".$_POST['Nom']."', '".$qrcode."', '".$_POST['trancedage']."', '".$_POST['SituationMatrimonial']."', '".$_POST['Occupation']."', '".$_POST['identifient']."','".$_POST['liensurfb']."', '".$_POST['Contact']."', '".$_POST['ville']."', '".$_POST['Quartier']."', '".$_POST['Sexe']."', '".$thumb."', '".$idclient."', '".$datedenregestrement."');";
+ $requetteAjout="INSERT INTO `gestiondevente`.`client` (`id`, `Nom`,`qrcode`, `trancedage`, `situationmatrimonial`, `occupation`, `identifientsurfacebook`, `liensurfacebook`, `contact`, `ville`, `quartier`, `sexe`, `photo`, `idclient`, `datedenregestrement`,`Statut`) VALUES (NULL, '".$_POST['Nom']."', '".$qrcode."', '".$_POST['trancedage']."', '".$_POST['SituationMatrimonial']."', '".$_POST['Occupation']."', '".$_POST['identifient']."','".$_POST['liensurfb']."', '".$_POST['Contact']."', '".$_POST['ville']."', '".$_POST['Quartier']."', '".$_POST['Sexe']."', '".$thumb."', '".$idclient."', '".$datedenregestrement."','Bleu');";
  $test=$main->requette($requetteAjout);
-     header("location:../../img/QRcode/generateur.php?idclient=".$idclient); 
+header("location:../../img/QRcode/generateur.php?idclient=".$idclient); 
     }
 }
 

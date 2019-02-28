@@ -39,8 +39,10 @@ $reponse=$main->fetchAll($sql);
 
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active">
-                          
-							
+                             <h3>Livraison</h3>
+							<div class="home">
+                                
+                            </div>
 								  
 							 
                             </div>
@@ -48,15 +50,15 @@ $reponse=$main->fetchAll($sql);
 									<h3>Livraison  confirmé</h3>
                              <div class="menu1">
                                  
-                             </div>
-
-
+                            </div>
                             </div>
                             <div id="menu2" class="tab-pane fade">
                             <h3>livraison reportée</h3>
+                            <div class="menu2"></div>
                             </div>
                             <div id="menu3" class="tab-pane fade">
                             <h3>livraison annullée</h3>
+                            <div class="menu3"></div>
                             </div>
 
                         </div>
@@ -120,13 +122,20 @@ $reponse=$main->fetchAll($sql);
                },
            
                 select: function(start, end) {
-                    $('.modal').modal('show');
+                    
                     var date=$('.modal-title1').html().split(":");
                     var date2=date[0].split(" ");
                     var dadefin=date2[2]+" "+date2[1]+ " "+date2[3]+" ";
                     $.post('fonction/foctionretourcalandar.php',{date:dadefin},function(data){
                        $('.menu1').empty().append(data);   
                     });
+                    $.post('fonction/fonctionannulecalandar.php',{date:dadefin},function(data){
+                       $('.menu3').empty().append(data);   
+                    });
+                    $.post('fonction/fonctionannulecalandar.php',{date:dadefin},function(data){
+                       $('.home').empty().append(data);   
+                    });
+                    $('.modal').modal('show');
 
                 },
                 eventClick: function(event, element) {

@@ -29,7 +29,7 @@ $main=new main();
                     <td>
                      <?php 
                     echo  '<a href="#'.$reponse['idclient'].'" data-toggle="modal" class="img thumbnail">';
-                    echo '<img style="height:100%; width:100%;" src="../img/photoclient/'.$reponse['photo'].'"></a>';
+                    echo '<img style="height:100%; width:100%;" src="../../img/photoclient/'.$reponse['photo'].'"></a>';
                     echo '<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="'.$reponse['idclient'].'" class="modal fade">';
                     ?> 
                   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -39,7 +39,7 @@ $main=new main();
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                       </div>
                       <div class="modal-body" style="text-align: center;">   
-                  <?php echo '<img style="height:500px;width:500px;" src="../img/photoclient/'.$reponse['photo'].'">';?>
+                  <?php echo '<img style="height:500px;width:500px;" src="../../img/photoclient/'.$reponse['photo'].'">';?>
                 
                         
                       </div>

@@ -32,7 +32,7 @@ $main=new main();
                     <td>
                      <?php 
                     echo  '<a href="#'.$reponse['codeproduit'].'" data-toggle="modal" >';
-                    echo '<img style="height:100px;" class="photosclient" src="../img/produit/'.$reponse['photoproduit'].'" class="thumbnail"></a>';
+                    echo '<img style="height:100px;" class="photosclient" src="../../img/produit/'.$reponse['photoproduit'].'" class="thumbnail"></a>';
                     echo '<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="'.$reponse['codeproduit'].'" class="modal fade">';
                     ?> 
                   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -42,12 +42,12 @@ $main=new main();
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                       </div>
                       <div class="modal-body" style="text-align: center;">   
-                  <?php echo '<img style="height:500px;width:500px;" class="thumbnail" src="../img/produit/'.$reponse['photoproduit'].'">';?>
+                  <?php echo '<img class="thumbnail" src="../../img/produit/'.$reponse['photoproduit'].'">';?>
                   </script>
                         
                       </div>
                      <div class="modal-footer" style="text-align: center;">
-                      <?php echo '<a href="?page=ficheproduit&codeproduit='.$reponse['codeproduit'].'">Consulter fiche individuel du produit </a>';?>
+                      <?php echo '<a style="width:100%;" href="?page=ficheproduit&codeproduit='.$reponse['codeproduit'].'">Consulter fiche individuel du produit </a>';?>
                      </div>    
                     </div>
                   </div>

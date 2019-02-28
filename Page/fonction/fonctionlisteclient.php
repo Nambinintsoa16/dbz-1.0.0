@@ -39,7 +39,7 @@ $main=new main();
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                       </div>
                       <div class="modal-body" style="text-align: center;">   
-                  <?php echo '<img style="height:500px;width:500px;" src="../img/photoclient/'.$reponse['photo'].'">';?>
+                  <?php echo '<img src="../img/photoclient/'.$reponse['photo'].'">';?>
                 
                         
                       </div>

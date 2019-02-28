@@ -31,33 +31,14 @@ $reponse=$main->fetchAll($sql);
                     </div>
                     <div class="modal-body">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#home">Livraison Effectuée</a></li>
-                            <li><a data-toggle="tab" href="#menu1">Livraison Confirmée</a></li>
+                            <li class="active"><a data-toggle="tab" href="#home">Livraison</a></li>
+                            <li><a data-toggle="tab" href="#menu1">Livraison Livrée</a></li>
                             <li><a data-toggle="tab" href="#menu2">Livraison Reportée</a></li>
                             <li><a data-toggle="tab" href="#menu3">Livraison Annulée</a></li>
                         </ul>
 
-                        <div class="tab-content">
-                            <div id="home" class="tab-pane fade in active">
-                          
-							
-								  
-							 
-                            </div>
-                            <div id="menu1" class="tab-pane fade">
-									<h3>Livraison  confirmé</h3>
-                             <div class="menu1">
-                                 
-                             </div>
-
-
-                            </div>
-                            <div id="menu2" class="tab-pane fade">
-                            <h3>livraison reportée</h3>
-                            </div>
-                            <div id="menu3" class="tab-pane fade">
-                            <h3>livraison annullée</h3>
-                            </div>
+                        <div class="tab-content data">
+                           
 
                         </div>
                     </div>
@@ -108,7 +89,7 @@ $reponse=$main->fetchAll($sql);
                     right: 'month,agendaWeek,agendaDay'
                 },
                 defaultDate: '2016-09-12',
-                navLinks: true, // can click day/week names to navigate views
+                navLinks: true, 
                 selectable: true,
                 selectHelper: true,
                 dayClick: function(date) { 
@@ -122,8 +103,9 @@ $reponse=$main->fetchAll($sql);
                     var date2=date[0].split(" ");
                     var dadefin=date2[2]+" "+date2[1]+ " "+date2[3]+" ";
                     $.post('fonction/foctionretourcalandar.php',{date:dadefin},function(data){
-                       $('.menu1').empty().append(data);   
+                       $('.data').empty().append(data);   
                     });
+                    
 
                 },
                 eventClick: function(event, element) {
@@ -142,7 +124,7 @@ $reponse=$main->fetchAll($sql);
 
             // Bind the dates to datetimepicker.
             // You should pass the options you need
-            $("#starts-at, #ends-at").datetimepicker();
+            //$("#starts-at, #ends-at").datetimepicker();
 
             // Whenever the user clicks on the "save" button om the dialog
             $('#save-event').on('click', function() {

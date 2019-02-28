@@ -148,9 +148,9 @@ $date=$dt->format("Y-m-d");
             </a>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-           <a href="?page=listedesproduit"> 
+           <a href="?page=livraisondujour"> 
             <div style="background-color:#00a38e;min-height:150px; color: #fff">
-            <i class="fa fa-calendar" style="z-index:3;position:absolute;font-size:50px;margin-top:30px;margin-left:400px;opacity:0.4"></i>
+            <i class="fa fa-truck" style="z-index:3;position:absolute;font-size:50px;margin-top:30px;margin-left:400px;opacity:0.4"></i>
          
               <div style="font-size: 28px; color: #fff;font-weight: bold;padding-top:30px;padding-left:20px">
               <?php
@@ -159,7 +159,7 @@ $date=$dt->format("Y-m-d");
               echo $count;
               ?>
               </div>
-              <div class="count"  style="padding-left:20px;margin-bottom:50px">Produit</div>
+              <div class="count"  style="padding-left:20px;margin-bottom:50px">Tout les livraison</div>
               <div style="z-index:#fff;height:30px;background:#008a7a">
                 <span style="position:absolute;padding-top:5px !important;padding-left:20px;text-align:center">Plus d'info &nbsp; <i class="fa fa-arrow-circle-right"></i></span>
               </div>
