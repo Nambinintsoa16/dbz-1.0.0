@@ -220,7 +220,7 @@ $(document).ready(function(){
        source : 'fonction/fonctionlisteclien.php',
     select : function(event, ui){ 
       $.post('fonction/image.php',{image:ui.item},function(data){
-         $('.image').empty().append('<img style="width:100%;height:100%;" src="../img/photoclient/'+data.image+'">');
+         $('.image').empty().append('<img style="width:100%;height:100%;" src="../../img/photoclient/'+data.image+'">');
       },'json'); 
     }
   });

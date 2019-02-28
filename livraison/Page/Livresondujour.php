@@ -53,34 +53,12 @@ $reponse=$main->fetchAll($sql);
       
 
         $(document).ready(function() {
-         
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
 
-            $('#tableau').DataTable({
-                "language": {
-                    "sProcessing": "Traitement en cours ...",
-                    "sLengthMenu": "Afficher _MENU_ lignes",
-                    "sZeroRecords": "Aucun résultat trouvé",
-                    "sEmptyTable": "Aucune donnée disponible",
-                    "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
-                    "sInfoEmpty": "Aucune ligne affichée",
-                    "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Chercher:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Chargement...",
-                    "oPaginate": {
-                        "sFirst": "Premier",
-                        "sLast": "Dernier",
-                        "sNext": "Suivant",
-                        "sPrevious": "Précédent"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Trier par ordre croissant",
-                        "sSortDescending": ": Trier par ordre décroissant"
-                    }
-                }
-            });
+            
 
             $('#calendar').fullCalendar({
                 header: {
@@ -88,7 +66,7 @@ $reponse=$main->fetchAll($sql);
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
-                defaultDate: '2016-09-12',
+                events:"json-events.php",
                 navLinks: true, 
                 selectable: true,
                 selectHelper: true,
@@ -96,6 +74,7 @@ $reponse=$main->fetchAll($sql);
                   $('.modal-title1').empty().append(date);
 
                },
+               
            
                 select: function(start, end) {
                     $('.modal').modal('show');
@@ -117,7 +96,7 @@ $reponse=$main->fetchAll($sql);
 
                 },
                 editable: true,
-                events: "fonction/fonctioncalandrierdelivre.php",
+               
                 eventLimit: true // allow "more" link when too many events
 
             });
