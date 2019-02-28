@@ -48,13 +48,13 @@ if(isset($_GET['client'])):
             <div class="profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
                 <div>
-                    <?php echo'<img class="editable img-responsive" alt="'.$reponse['Nom'].'" id="avatar2" src="../img/photoclient/'.$reponse['photo'].'">';?>
+                    <?php echo'<img class="editable img-responsive" alt="'.$reponse['Nom'].'" id="avatar2" src="../../img/photoclient/'.$reponse['photo'].'">';?>
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div  class="profile-userpic">
-                     <?php echo '<img src="../img/QRcode/'.$reponse['qrcode'].'.png" class="img-thumbnail style="width:60px;">';?>
+                     <?php echo '<img src="../../img/QRcode/'.$reponse['qrcode'].'.png" class="img-thumbnail style="width:60px;">';?>
                     </div>
                 </div>
                 

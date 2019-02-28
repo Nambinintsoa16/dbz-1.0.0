@@ -26,7 +26,7 @@ if (isset($_GET['codeproduit'])):
                     <div class="col-md-4">
                         <div class="profile-img">
                           <form>
-                            <?php echo '<img src="../img/produit/'.$reponse['photoproduit'].'" alt=""/>';?>
+                            <?php echo '<img src="../../img/produit/'.$reponse['photoproduit'].'" alt=""/>';?>
                             <div class="file btn btn-lg btn-primary">
                                 <?php echo $reponse['codeproduit'];?>
                                 <input type="file" name="file"/>
