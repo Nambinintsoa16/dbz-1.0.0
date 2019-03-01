@@ -14,7 +14,7 @@ $date=$dt->format("Y-m-d");
             </div>
         </div>
         </div>
-        <div class="rowwow fadeInUp">
+        <div class="row wow fadeInUp">
 
             <img src="../img/banniere.jpg" alt="" height="400px" width="100%"
                 style="object-fit: cover;top:-2Opx !important">
@@ -166,8 +166,80 @@ $date=$dt->format("Y-m-d");
         </div>
 
         </div>
-        <div class="row">
 
+        <div class="row" style="margin-top:10px">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-truck"></i><a href="index.html">Etat de Livraison</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row" style="margin-right:0px;margin-left:0px;color:#fff">
+            <div class="col-md-4">
+                <div class="row" style="margin-right:0px;margin-left:0px;border:solid 5px #fff">
+                    <div class="col-md-4" style="background:#2d3e50;min-height:120px;">
+                        <canvas style="backgroud:White;height:117px">
+                            progess
+                        </canvas>
+                    </div>
+                    <div class="col-md-8" style="background:#34495e;min-height:120px;">
+                        <div style="padding-top:10px">
+                            <span>Livré</span><br>
+                            <span style="font-size:30px">80%</span><br>
+                            <canvas style="backgroud:White;height:5px">
+                               
+                            </canvas><br>
+                            <span>Progression</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row" style="margin-right:0px;margin-left:0px;border:solid 5px #fff">
+                    <div class="col-md-4" style="background:#236d9e;min-height:120px;">
+                    <canvas style="backgroud:White;height:117px">
+                            progess
+                        </canvas>
+                    </div>
+
+                    <div class="col-md-8" style="background:#2a80b9;min-height:120px;">
+                    <div style="padding-top:10px">
+                            <span>Livré</span><br>
+                            <span style="font-size:30px">10%</span><br>
+                            <canvas style="backgroud:White;height:5px">
+                               
+                            </canvas><br>
+                            <span>Progression</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="row" style="margin-right:0px;margin-left:0px;border:solid 5px #fff"">
+                    <div class="col-md-4" style="background:#c0062b;min-height:120px;">
+                    <canvas style="backgroud:White;height:117px">
+                            progess
+                        </canvas>
+                    </div>
+
+                    <div class="col-md-8" style="background:#e30832;min-height:120px;">
+                    <div style="padding-top:10px">
+                            <span>Livré</span><br>
+                            <span style="font-size:30px">10%</span><br>
+                            <canvas style="backgroud:White;height:5px">
+                               
+                            </canvas><br>
+                            <span>Progression</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
 
