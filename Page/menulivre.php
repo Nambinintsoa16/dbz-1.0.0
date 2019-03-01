@@ -129,8 +129,6 @@ $date=$dt->format("Y-m-d");
           </div>
         
            </a>
-                      
-
         </div> 
             </div>
 <div class="row" style="margin-top:30px">

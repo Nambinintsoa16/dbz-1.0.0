@@ -6301,3 +6301,6 @@ a .paginate_button::after {
 img .photosclient {
     background: none !important;
 }
+.box-livraison {
+    background-color: #04a5cc;
+}
