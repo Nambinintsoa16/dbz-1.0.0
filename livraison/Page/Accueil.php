@@ -41,7 +41,14 @@ if (!isset($_SESSION['login'])){
   </head>
 <body>
   <section id="container" class="">	
-    <header class="header " style="background-image: url('../img/banniere blanc.png');background-size: cover;background-repeat: no-repeat; ">
+  <header class="header " style="background:#054d63;border-bottom:white 1px solid;">
+            <div
+                style="position:absolute;width:35px;height:35px;border-radius:50%;background:white;z-index:123;margin-top:13px;padding-top:2px;padding-left:2px;">
+                <img src="../img/logo.png" width="30" alt="">
+            </div>
+            <div style="position:absolute;z-index:124;margin-left:50px;color:white;padding-top:20px">
+            <span>GESTION DE VENTE EN LIGNE</span>
+            </div>
       <div class="top-nav notification-row">
 
          <ul class="nav pull-right top-menu">

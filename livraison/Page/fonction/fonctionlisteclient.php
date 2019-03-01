@@ -14,7 +14,6 @@ $main=new main();
                     <th>Lien sur facebook</th>
                     <th>Photo</th>
                     <th></th>
-                    
                   </tr>
                 </thead>
                 <tbody class="listProduit" >
@@ -50,9 +49,6 @@ $main=new main();
                     </div>
                   </div>
                 </div>
-                     
-
-
                     </td>
                   <td>
                       <div class="btn-group">
