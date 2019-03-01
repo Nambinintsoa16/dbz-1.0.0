@@ -7,10 +7,17 @@
   <title>Gestion de vente sur Facebook</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
   <link href="css/elegant-icons-style.css" rel="stylesheet" />
   <link href="css/font-awesome.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet" />
+  <script type="text/javascript" src="js/wow.min.js"></script>
+  <script>
+    $(function(){
+  new WOW().init(); 
+});
+  </script>
 </head>
 <body class="login-img3-body">
   <div class="container">
@@ -33,6 +40,8 @@
     </form>
   </div>
 </body>
+
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/fonctionLogin.js"></script>
+
 </html>
