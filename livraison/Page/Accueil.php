@@ -36,8 +36,6 @@ if (!isset($_SESSION['login'])){
   <link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
   <script src="../js/jquery.js"></script>
   <script src="../js/Chart.min.js"></script>
-  
-
   </head>
 <body>
   <section id="container" class="">	
@@ -144,10 +142,6 @@ if (!isset($_SESSION['login'])){
               <li><a class="" href="?page=listedesproduit">Liste des produit </a>  
             </ul>
           </li>
-
-
-
-
 <li class="sub-menu">
             <a href="javascript:;" class="">
                     <i class="fa fa-users"></i>
@@ -168,7 +162,6 @@ if (!isset($_SESSION['login'])){
               <li><a class="" href="?page=vente">Passe commande</a></li>
             </ul>
 </li>    
-
 <li class="sub">
             <a href="?page=Livraisonmenu" class="">
                     <i class="fa fa-users"></i>

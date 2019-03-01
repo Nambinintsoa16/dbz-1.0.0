@@ -155,7 +155,7 @@ $date=$dt->format("Y-m-d");
 
                     <div class="" style="background:#3b5998;min-height:120px;color:white;margin-top:-25px">
 
-                        <div class="count" style="text-align:center;padding-top:20px;font-size:24px">Facebook</div>
+                        <div class="count" style="text-align:center;padding-top:20px;font-size:24px">Autres</div>
                         <div style="height:30px;background:#324b81;margin-top:40px;padding-top:6px;text-align:center">
                         </div>
 
