@@ -53,20 +53,34 @@ if(isset($_GET['codeproduit'])):
                       </div>
                     </div>
                     <div class="form-group ">
-                      <label for="category" class="control-label col-lg-2">Cathegory<span class="required">*</span></label>
-                      <div class="col-lg-10">
-                           
-                        <select class="form-control select" name="category" >
-                        <?php
-                          $sql="SELECT `designation` FROM `categoryproduit` "; 
-                            $category=$main->fetchAll($sql);
-                          foreach ($category as $category):
-                            ?>
-                          <option><?php echo $category['designation'] ;?></option>
-                        <?php endforeach; ?>
+                      <label for="category" class="control-label col-lg-2">Fammille<span class="required">*</span></label>
+
+                      <div class="col-lg-3">      
+                  <select class="form-control famille" name="famille" placeholder="Cathegory" >
+                     <option>AUTRES</option>
+                     <option>BEAUTE</option>
+                     <option>BOISSON</option>
+                     <option>DEO & PARFUM</option>
+                     <option>HYGIENE BUCO-DENTAIRE</option>
+                     <option>HYGIENE CORPORELLE</option>
+                     <option>LESSIVE</option>
+                     <option>SOINS CAPILLAIRE</option>
+                     <option>SOINS VISAGE</option>  
+                  </select>     
+
+                      </div>
+                    <label for="category" class="control-label col-lg-2">Groupe<span class="required">*</span></label>
+                      <div class="col-lg-3">      
+                        <select class="form-control groupe" name="groupe">
+                        
                         </select>
                       </div>
+
+
+
+
                     </div>
+                     
                      
 
                      <div class="form-group ">
@@ -114,14 +128,39 @@ if(isset($_GET['codeproduit'])):
 
 <script type="text/javascript">
   $(document).ready(function(){
-    var option=<?php echo '"'.$reponse['category'].'";';?>
-    $('.select option').each(function(){
+     list();
+     option();
+   
+    $('.famille').on('change',function(){
+         list();
+    });
+    function list(){
+      var famille=$('.famille').val();
+      $.post('fonction/cat.php',{famille:famille},function(data){
+           $('.groupe').empty().append(data);
+             group();
+          
+      });
+    }
+    function option(){
+        var option=<?php echo '"'.$reponse['famille'].'"';?>;
+        $('.famille option').each(function(){
          if($(this).val()==option){
           $(this).attr('selected','selected');
-         }     
-    });
-  });
-
+            
+         }});  
+          list();
+         
+        
+    }
+    function group(){
+       $('.groupe option').each(function(){ 
+        var group=<?php echo '"'.$reponse['group'].'";';?>;
+         if($(this).val()==group){
+          $(this).attr('selected','selected');
+        }});
+    }
+});
   
 </script>
 

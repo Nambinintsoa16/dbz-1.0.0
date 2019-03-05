@@ -1,109 +1,155 @@
 <?php
-include_once('fonction/class/main.php');
-$main=new main();
-function unique_multidim_array($array, $key) {
-    $temp_array = array();
-    $i = 0;
-    $key_array = array();
-   
-    foreach($array as $val) {
-        if (!in_array($val[$key], $key_array)) {
-            $key_array[$i] = $val[$key];
-            $temp_array[$i] = $val;
-        }
-        $i++;
+if (isset($_GET['error'])){
+    if ($_GET['error']=='0'){
+      echo '<script type="text/javascript">alert("Client enregistre avec succes");</script>';
+    }else if ($_GET['error']=='1'){
+      echo '<script type="text/javascript"> alert("Veuillez remplir tous les champs avant de valider votre transaction.");</script>';
+    
+  }else if ($_GET['error']=='2'){
+      echo '<script type="text/javascript"> alert("Veuillez remplir tous les champs avant de valider votre transaction.");</script>';
     }
-    return $temp_array;
-}
-?>
+ } 
+ ?>
+
 <section id="main-content">
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-files-o"></i> Livraison</h3>
+           <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-files-o"></i> Ajout client</h3>
+            </div>
+            <div class="col-lg-10">
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Accueil</a></li>
-              <li><i class="fa fa-plane" aria-hidden="true"></i></i>Livraison</li>
-              <li><i class="fa fa-list-alt" aria-hidden="true"></i>
-liste des livraison</li>
+              <li><i class="fa fa-home"></i><a href="?page=">Accueil</a></li>
+              <li><i class="fa fa-users"></i><a href="?page=">Client</a></li>
+              <li><i class="fa fa-plus"></i>Ajout Client</li>
             </ol>
+            </div>
+          <div class="col-lg-2">
+          <a class="btn btn-primary col-lg-12" href="?page=listedesclient"><i class="fa fa-list"></i></a>
           </div>
+          </div>
+          
         </div>
-    
-
-<div class="row">
+        <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <table class="table table-striped table-advance table-hover">
-                <tbody>
-                  <tr>
-                    <th>Client</th>
-                    <th>Date de livraison</th>
-                    <th>Lieu de livraison</th>
-                    <th>Heure de livraison</th>
-                     <th>Produit</th>
-                    <th></th>
-                  </tr>
-            <?php
-             $sql="SELECT * FROM `facture` WHERE `Statut`='on_attente'"; 
-             $reponse=$main->fetchAll($sql);
-             $Numfact=unique_multidim_array($reponse, 'NumFact');
-             foreach ($Numfact as $rep):
-              ?>      
-                  <tr>
-                    <td><?php
-                    $sql="SELECT `Nom` FROM `client` WHERE `idclient`='".$rep['idclient']."'";
-                    $client=$main->fetch($sql);
-                    echo $client['Nom'];
-                    ?></td>
-                    <td>
-                      <?php
-                      $sql="SELECT * FROM `livraison` WHERE `idcomand`='".$rep['idcomande']."'";
-                      $livraison=$main->fetch($sql); 
-                      echo $livraison['datediflivre'];
-                      ?>
-                    </td>
-                    <td><?php
-                    echo $livraison['ville']." , ".$livraison['qartieur'];
-                    ?></td>
-                    <td>
-                      <?php
-                    echo $livraison['heurlivredifdebut']." à ".$livraison['heurlivrediffin'];
-                    ?>
-                    </td>
-                    <td>
-                      <?php
-                      $sql1="SELECT `idcomande` FROM `facture` WHERE `NumFact`='".$rep['NumFact']."'";
-                      $numcommande=$main->fetchAll($sql1);
-                      foreach ($numcommande as $commande) {
-
-                        $sql="SELECT `codeproduit` FROM `comande` WHERE `idcomand`='".$commande['idcomande']."'";
-                        $idProduit=$main->fetch($sql);
-                        $sql="SELECT `designation` FROM `produit` WHERE `codeproduit`='".$idProduit['codeproduit']."'"; 
-                        $produit=$main->fetch($sql);
-                        echo $produit['designation']."<br/>";
-
-                      }
-                      
-                      ?>
-            
-                    </td>
-                    <td>
-                      <div class="btn-group">
-               <a class="btn btn-info" href="?page=relance&idfacture=<?php echo $rep['NumFact'];?>&idclient=<?php echo $rep['idclient'];?>"><i class="fa fa-info"></i></a>
+              <header class="panel-heading">
+               Saisie client
+              </header>
+              <div class="panel-body">
+                <div class="form">
+                  <form class="form-validate form-horizontal " id="register_form" method="post" action="fonction/fonctionAjoutClient.php" enctype="multipart/form-data">
+                    <div class="form-group ">
+                      <label for="Nom" class="control-label col-lg-2">Nom et Prénom <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" id="Nom" name="Nom" type="text" required />
                       </div>
-                    </td>
-                  </tr>
-               <?php
-               endforeach; 
-               ?>   
-                </tbody>
-              </table>
+                    </div>
+                    <div class="form">
+                  <form class="form-validate form-horizontal " id="register_form" method="post" action="fonction/fonctionAjoutClient.php">
+                    <div class="form-group ">
+                      <label for="trancedage" class="control-label col-lg-2">Trance d'age <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control" name="trancedage"> 
+                            <option>-24</option>
+                            <option>[25 - 29]</option>
+                            <option>[30 - 34]</option>
+                            <option>[35 - 39]</option> 
+                            <option>[40 - 44]</option>
+                            <option>[45 - 49]</option>
+                            <option>[50 - 54]</option>
+                            <option> +55 </option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="SituationMatrimonial" class="control-label col-lg-2">Situation matrimonial <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control" name="SituationMatrimonial"> 
+                            <option >Célibataire </option>
+                            <option >Marié(e)</option>
+                  
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="Occupation " class="control-label col-lg-2">Occupation <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control" name="Occupation"> 
+                            <option >Actif</option>
+                            <option >Femme au foyer </option>
+                            <option >Chomeur</option>
+                            <option >Etudiant</option>
+                            <option >Retraite </option>            
+                        </select>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group ">
+                      <label for="identifient" class="control-label col-lg-2">Identifient sur Facebook<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" id="address" name="identifient" type="text" required />
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="liensurfb" class="control-label col-lg-2">Lien sur Facebook<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" id="liensurfb" name="liensurfb" type="text" required />
+                      </div>
+                    </div>
+
+                    <div class="form-group ">
+                      <label for="Contact" class="control-label col-lg-2">Contact<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class="form-control " id="Contact" name="Contact" type="text" required />
+                      </div>
+                    </div>
+
+                    <div class="form-group ">
+                      <label for="ville" class="control-label col-lg-2">Ville<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class="form-control " id="ville" name="ville" type="text" required />
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="Quartier" class="control-label col-lg-2">Quartier<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class="form-control " id="Quartier" name="Quartier" type="text" required />
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label for="Sexe" class="control-label col-lg-2">Sexe <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                         
+                           <select class="form-control" name="Sexe"> 
+                            <option >Homme</option>
+                            <option >Femme</option>
+                            
+                          </select>
+                           
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="form-group ">
+                      <label for="trancedage" class="control-label col-lg-2">Photo <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input  id="image" name="image" type="file" required />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">Ajouter</button>
+                        <button class="btn btn-default" type="button">Annuler</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </section>
           </div>
         </div>
-
-
-
       </section>
     </section>

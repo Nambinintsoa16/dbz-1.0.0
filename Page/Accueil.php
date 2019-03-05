@@ -40,17 +40,33 @@ if (!isset($_SESSION['login'])){
 </head>
 <body>
     <section id="container" class="">
-        <header class="header " style="background:#054d63;border-bottom:white 1px solid;">
+        <header class="header " style="background:#fff;border-bottom:white 1px solid;z-index:1">
             <div
-                style="position:absolute;width:35px;height:35px;border-radius:50%;background:white;z-index:123;margin-top:13px;padding-top:2px;padding-left:2px;">
+                style="position:absolute;width:35px;height:35px;border-radius:50%;background:white;z-index:3456;margin-top:13px;padding-top:2px;padding-left:2px;">
                 <img src="../img/logo.png" width="30" alt="">
             </div>
             <div style="position:absolute;z-index:124;margin-left:50px;color:white;padding-top:20px">
-            <span>GESTION DE VENTE EN LIGNE</span>
+          
             </div>
             <div class="top-nav notification-row">
 
                 <ul class="nav pull-right top-menu">
+                          
+                  <li id="alert_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-envelope-l"></i>
+                            <span class="badge bg-important"></span>
+                        </a>
+                        <ul class="dropdown-menu extended notification relancedrop">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p>Vous aviez <span></span>Message</p>
+                            </li>
+                            <li>
+                                <a href="?page=message">Voir tous</a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li id="alert_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -90,8 +106,16 @@ if (!isset($_SESSION['login'])){
             </div>
         </header>
         <aside>
-            <div id="sidebar" class="nav-collapse " style="background-color: #054d63;">
-                <ul class="sidebar-menu" style="color:#fff;">
+            <div id="sidebar" class="nav-collapse " style="background-color: #054d63;z-index:1;backround-image:url('../livraison/')">
+                <ul class="sidebar-menu" style="color:#fff;z-index:234">
+                <div style="z-index:3456;background:#fff;width:100%;height:180px;margin-top:-60px">
+                        <img src="../img/comm.png" alt=""
+                            style="width:100%;height:100%;object-fit: cover;overflow: hidden;padding-right:0px;">
+                        <div
+                            style="position:absolute;width:100%;height:30px;background:#000;margin-top:-30px;margin-right:2px;opacity:0.7">
+                            <h3 style="text-align:center;font-size:16px;margin-top:4px">Service Commerciale</h3>
+                        </div>
+                    </div>
                     <li>
                         <a class="" href="?page=recap">
                             <i class="icon_house_alt"></i>
@@ -115,7 +139,7 @@ if (!isset($_SESSION['login'])){
 
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
-                            <i class="fa fa-cube"></i>
+                            <i class="fa fa-cubes"></i>
                             <span>Produit</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
@@ -127,30 +151,21 @@ if (!isset($_SESSION['login'])){
                     </li>
 
                     <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="fa fa-users"></i>
-                            <span>Autre</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="?page=infoetreclamation">Reclamation</a></li>
-                            <li><a class="" href="?page=infodemandeinfo">Demande d'information</a></li>
-
-                        </ul>
+                    <a class="" href="?page=infoetreclamation">  <i class="fa fa-play"></i>Autre</a>
                     </li>
                     <li class="sub">
                         <a href="?page=vente" class="">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-edit"></i>
                             <span>Commande</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
+                           
                         </a>
 
                     </li>
                     <li class="sub">
                         <a href="?page=menulivre" class="">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-truck"></i>
                             <span>Livraison</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
+                            
                         </a>
 
                     </li>

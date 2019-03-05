@@ -14,7 +14,7 @@
 
 
           <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
                 Ajout cathegory
@@ -22,27 +22,55 @@
               <div class="panel-body">
             <form role="form" action="fonction/fonctionAjoutCathegory.php" method="post">
                   <div class="form-group">
-          <label for="textCathegory">Nouvelle cathegory</label>
-          <input type="text" class="form-control" id="designation" placeholder="Cathegory" name="designation">
+                    <div class="col-lg-3">
+                  <select class="form-control famille" placeholder="Cathegory" >
+                     <option>AUTRES</option>
+                     <option>BEAUTE</option>
+                     <option>BOISSON</option>
+                     <option>DEO & PARFUM</option>
+                     <option>HYGIENE BUCO-DENTAIRE</option>
+                     <option>HYGIENE CORPORELLE</option>
+                     <option>LESSIVE</option>
+                     <option>SOINS CAPILLAIRE</option>
+                     <option>SOINS VISAGE</option>
+                      
+                  </select>        
                   </div>
-                  <button type="submit" class="btn btn-primary" id="cathegory">Valider</button>
+                 <div class="col-lg-3">   
+          
+          <input type="text" class="form-control groupe" placeholder="Goupe" name="designation">
+                  </div>
+                  
+                  <div class="col-lg-3">
+                   <button type="submit" class="btn btn-primary" id="cathegory"><i class="fa fa-plus"></i></button>
+        
+                  </div>
+
+                  </div>
+                  
                 </form>
 
               </div>
             </section>
           </div>
-
-<div class="col-lg-6">
+<div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
                 Liste des cathegory
               </header>
-              <div class="panel-body">
-              <table class="table table-striped table-advance table-hover">
-                <tbody class="tableCat">
-                  
-                </tbody>
-              </table>
+         <table class="table table-striped table-advance table-hover">
+          <thead>               
+           <tr>
+             <th>Id</th>
+             <th>Famille</th>
+             <th>Groupe</th>
+             <th></th>
+          </tr>
+        </thead>
+     <tbody class="tableCat">     
+      </tbody>
+     </table>
+              
             </section>
           </div>
         </div>
@@ -56,3 +84,8 @@
 
       </section>
     </section>
+ <script type="text/javascript">
+   $(document).ready(function(){
+    $('.table').dataTable();
+   });
+ </script>

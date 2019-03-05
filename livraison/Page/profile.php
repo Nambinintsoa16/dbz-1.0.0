@@ -36,7 +36,7 @@
                         <div class="col-xs-12 col-sm-3 center">
                             <span class="profile-picture">
                                   <?php echo '<img style="border-radius: 0px;height:160px; 
-  width:160px;" src="../../img/Profil/'.$login['photo'].'" >';?> 
+  width:160px;" src="../img/Profil/'.$login['photo'].'" >';?> 
                             </span>
 
                             <div class="space space-4"></div>

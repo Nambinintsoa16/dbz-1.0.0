@@ -12,20 +12,21 @@ if (isset($_GET['codeproduit'])):
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-files-o"></i>Fiche individuel produit</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="Accueil.php">Accueil</a></li>
-              <li><i class="icon_document_alt"></i>Produit</li>
+            <li><i class="fa fa-home"></i><a href="?page=">Accueil</a></li>
+              <li><i class="fa fa-cube"></i><a href="#">Produit</a></li>
+              <li><i class="fa fa-list"></i><a href="?page=listedesproduit">Liste des produits</a></li>
               <li><i class="fa fa-files-o"></i>Fiche produit</li>
             </ol>
           </div>
         </div>
-
+<fieldset><legend>Produit</legend>
 <div class="container emp-profile">
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
                           <form>
-                            <?php echo '<img src="../img/produit/'.$reponse['photoproduit'].'" alt=""/>';?>
+                            <?php echo '<img src="../../img/produit/'.$reponse['photoproduit'].'" alt=""/>';?>
                             <div class="file btn btn-lg btn-primary">
                                 <?php echo $reponse['codeproduit'];?>
                                 <input type="file" name="file"/>
@@ -42,9 +43,13 @@ if (isset($_GET['codeproduit'])):
                                     <h5>
                                         <?php echo "<strong>Prix : ".number_format($reponse['prix'],2,",",".")." Ar </strong>";?>
                                     </h5>
-                                    <h6>
-                                        <?php echo $reponse['category']?>
-                                    </h6>
+                                    <h5>
+                                        <?php 
+                                         echo "Famille : ".$reponse['famille']."<br/>";
+                                         echo  "<br/>";
+                                         echo "Groupe : ".$reponse['group'];
+                                        ?>
+                                    </h5>
                                     <p class="proile-rating"> <?php?><div id="user-profile-2" class="user-profile">
         <div class="tabbable">
             <ul class="nav nav-tabs padding-18">
@@ -74,7 +79,7 @@ if (isset($_GET['codeproduit'])):
 
                      </P>
                      <p class="text-justify" style="padding-left:10px;padding-right:10px;"> 
-                      <button class="btn btn-primary">Modifier</button>
+                      
                    </p>   
                       </div>
                     </div>
@@ -88,16 +93,53 @@ if (isset($_GET['codeproduit'])):
                     <?php echo $reponse['ModeUtilisation'];?>
                    </p> 
                    <p class="text-justify" style="padding-left:10px;padding-right:10px;"> 
-                      <button class="btn btn-primary">Modifier</button>
+                      
                    </p>    
                         </div>
                     </div>
-                </div>
+            </div>
+      
+      
+  </div>
+</div>
+</section>
 
-      </div>
+    </section>
+
+</fieldset>
+    <section id="main-content" style="margin-top: -95px;">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+          
+<fieldset><legend>Argumentaire et Objections </legend>
+
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4" style="text-align: center;">
+                 <div style="margin-left: 100px;">
+          <object type="application/pdf" width=800 height=900 data="../../argument/<?php echo $reponse['argument'];?>"></object>     
+          <!--<embed src="../argument/<?php echo $reponse['argument'];?>" width=800 height=900 type="application/pdf"/> -->
+                 </div>     
+               
+               
+      
+      </div> 
+  </div>
+</div>
+
+
+  </fieldset>   
+
+         
+     
       
       </section>
+
     </section>
+
+
   <?php
        endif;
    endif; 

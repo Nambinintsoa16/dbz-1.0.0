@@ -4,8 +4,7 @@ session_start();
 $main=new main();
             $sql="SELECT * FROM `client`";
             $reponse=$main->fetchAll($sql);
-            ?>       
-                
+            ?>        
                 <table class="table table-striped table-advance table-hover" id="tableau">
                 <thead>
                   <tr>
@@ -19,8 +18,6 @@ $main=new main();
                   </tr>
                 </thead>
                 <tbody class="listProduit" >
-
-           
                
              <?php foreach ($reponse as $reponse):?> 
                   <tr>
@@ -32,7 +29,7 @@ $main=new main();
                     <td>
                      <?php 
                     echo  '<a href="#'.$reponse['idclient'].'" data-toggle="modal" class="img thumbnail">';
-                    echo '<img style="height:100%; width:100%;" src="../img/photoclient/'.$reponse['photo'].'"></a>';
+                    echo '<img style="height:100px; width:auto;oveflow:hidden" src="../img/photoclient/'.$reponse['photo'].'"></a>';
                     echo '<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="'.$reponse['idclient'].'" class="modal fade">';
                     ?> 
                   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -42,8 +39,8 @@ $main=new main();
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                       </div>
                       <div class="modal-body" style="text-align: center;">   
-                  <?php echo '<img style="height:500px;width:500px;" src="../img/photoclient/'.$reponse['photo'].'">';?>
-                  </script>
+                  <?php echo '<img src="../img/photoclient/'.$reponse['photo'].'"> ';?>
+                
                         
                       </div>
                       <div class="modal-footer" style="text-align: center">
@@ -53,9 +50,6 @@ $main=new main();
                     </div>
                   </div>
                 </div>
-                     
-
-
                     </td>
                   <td>
                       <div class="btn-group">

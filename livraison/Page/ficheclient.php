@@ -12,8 +12,10 @@ if(isset($_GET['client'])):
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-facebook"></i>Enregistrement des discussions sur facebook</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Accueil</a></li>
-              <li><i class="icon_document_alt"></i>Discussion sur facebook</li>
+              <li><i class="fa fa-home"></i><a href="?page=">Accueil</a></li>
+              <li><i class="fa fa-users"></i><a href="">Client</a></li>
+              <li><i class="fa fa-list"><a href="?page=listedesclient"></i>Liste des clients</a></li>
+              <li><i class="fa fa-users"></i>Fiche Client</li>
             </ol>
           </div>
         </div>
@@ -46,13 +48,13 @@ if(isset($_GET['client'])):
             <div class="profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
                 <div>
-                    <?php echo'<img class="editable img-responsive" alt="'.$reponse['Nom'].'" id="avatar2" src="../img/photoclient/'.$reponse['photo'].'">';?>
+                    <?php echo'<img class="editable img-responsive" alt="'.$reponse['Nom'].'" id="avatar2" src="../../img/photoclient/'.$reponse['photo'].'">';?>
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div  class="profile-userpic">
-                     <?php echo '<img src="../img/QRcode/'.$reponse['qrcode'].'.png" class="img-thumbnail style="width:60px;">';?>
+                     <?php echo '<img src="../../img/QRcode/'.$reponse['qrcode'].'.png" class="img-thumbnail style="width:60px;">';?>
                     </div>
                 </div>
                 

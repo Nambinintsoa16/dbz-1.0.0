@@ -78,28 +78,29 @@ $date=$dt->format('Y-m-d');
 
 
 
-<fieldset class="class="border p-2""><legend>Client</legend>
+<fieldset class="border p-2">
       <div class="form-group col-md-12">
-       
-           <div class="col-lg-10">
-            <div class="row">
-                <div class="col-lg-7">
-                  <input type="text" class="form-control cherche client select-client" id="client" style="width: 350px;" placeholder="Client">
-                </div>
-                <div class="col-lg-4" style="text-align: right;">
-                  <div class="image img-thumbnail" style="width: 150px;height: 150px;text-align:center;padding: auto auto;">
+      <div class="row" style="padding:30px 30px">
+          <div class="form-group col-lg-10">
+            <legend>Client</legend>  
+          
+            <input type="text" class="form-control cherche client select-client col-md-12" id="client"  placeholder="Client">
+          </div>
+          <div class="form-group col-lg-2" style="">
+          <legend>Photo Client</legend>  
+                  <div class="image img-thumbnail col-md-12" style="width: 150px;height: 150px;text-align:center;padding: auto auto;">
                     <h5 style="margin-top:45%; ">Photo client</h5> 
                   </div>
                   <span class="idclient"></span>
                 </div>
                  
             </div>
-        </div>
+      
       
       </div>
 </fieldset>
 
-<fieldset class="class="border p-2""><legend>Commentaire</legend>
+<fieldset class="border p-2"><legend>Commentaire</legend>
       
       <div class="form-group">
         <textarea class="form-control remarque" style="resize:none;"></textarea>

@@ -143,7 +143,7 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
  <?php endforeach;?>
 
                    <tr style="">
-                      <th style="text-align: center;"><span style="color: #000">Emetteur :</span>  <span style="background-color: #d4d8dd;padding: 5px;border-radius: 5px;"><?php
+                      <th style="text-align: center;"><span style="color: #000">Emetteur :</span>  <span style="background-color: #007bff ;padding: 5px;color:white"><?php
                       $sql="SELECT `username` FROM `user` WHERE `matricule`='".$rep1['matriculeuser']."'";
                       $repuser=$main->fetch( $sql);
                       echo $repuser['username'];
@@ -152,7 +152,7 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
                       <th style="text-align: center;"></th>
                       <th style="text-align: center;color: #000;">Sous total en Ariary</th>
                       <th style="text-align: center;" class="contTotal">
-                       <span style="background-color: #d4d8dd;padding: 5px;border-radius: 5px;"> <?php
+                       <span style="background-color: #007bff ;padding: 5px;color:white"> <?php
                         echo number_format($soustout, 2, ',', ' ')." Ar";
                          ?>
                          </span>
@@ -179,60 +179,50 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
               <div class="panel-body">
                 <form class="form-horizontal"> 
              <div class="col-md-12">  
-                <div class="col-md-9">
+                <div class="col-md-12">
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Date de livraison</label>
-                    <div class="col-sm-5">
-                      <input type="date" class="form-control datelivre" style="width: 150px;" value= <?php echo $livre['datedelivraison'] ?> >
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control datelivre" class="col-md-10" value= <?php echo $livre['datedelivraison'] ?> >
                     </div>
                   </div>
 
                   <div class="form-group">
                    <label class="col-sm-2 control-label">Heure de livraison</label>
-                    <div class="col-sm-2">
-                      <input type="Time" class="form-control debut" style="width: 150px;" value= <?php echo $livre['debut'] ?>>
+                    <div class="col-sm-5">
+                      <input type="Time" class="form-control debut" class="col-md-12" value= <?php echo $livre['debut'] ?>>
                     </div>
                     <label class="col-sm-1 control-label "> à </label>
-                    <div class="col-sm-3">
-                      <input type="Time" class="form-control fin" style="width: 150px;"value= <?php echo $livre['fin'] ?>>
+                    <div class="col-sm-4">
+                      <input type="Time" class="form-control fin" class="col-md-12" value= <?php echo $livre['fin'] ?>>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Nom du livreur</label>
-                    <div class="col-sm-5">
-                      <input type="text" class="form-control livreur" style="width: 452px;" value= >
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control livreur" class="col-md-12"  value= >
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Remarque</label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-10">
                       <textarea class="form-control remarque"></textarea>
                     </div>
                   </div>
-               </div>   
-                  
-              <div class="col-md-3">
-                  <div class="col-md-12">
+                  <div class="form-group">
+                    <div class="col-md-12">
                      <div class="col-md-12" style="margin-top: 15px;">
-                <?php echo '<a class="btn btn-default valider" style="width:175px;padding:0px;height:25px;"   href="fonction/fonctionvente.php?idfacture='.$_GET['idfacture'].'"><span style="background:#2980b9;height:100%;width:150px;"><i class="fa fa-fa fa-check" style="color:#fff;width:30px;"></i></span>   Valider la commande</a>';?>
+                <?php echo '<a class="btn btn-default valider pull-right " style="width:175px;height:40px;background:#28a745;color:white;font-weight:bold"   href="fonction/fonctionvente.php?idfacture='.$_GET['idfacture'].'"><span style="background:#2980b9;height:100%;width:150px;"></span>  Valider la commande</a>';?>
                      </div>
-                     <div class="col-md-12" style="margin-top: 15px;">
-                    <a style="height:25px;" class="btn btn-default  modifier"  href="#"><span style="background-color:#8e45ad;color: #fff;" ><i class="fa fa-edit" ></i>  </span>Modifier la commande </a>
-                     </div>
-                     <div class="col-md-12" style="margin-top: 15px;">
-                <?php echo '<a class="btn btn-default Annule" style="width:175px;height:25px;" href="fonction/Annule.php?idfacture='.$_GET['idfacture'].'"><span style="background-color:#d93625;width:150px;"><iclass="fa fa-edit"></i></span> Annule commande</a>';?> 
-                     </div>
-
-                  </div>
                  
                 </div>
-              </div>
-
+                  </div>
+               </div>   
               </div>
                 </form>
               </div>
-            </section>          
+            </section >            
                
 <script type="text/javascript">
 
@@ -256,7 +246,12 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
           $.post('fonction/confirmationlivre.php',{idfacture:idfacture},function(data){
                 $('.confirm').empty().append(data);
                 $('.confirmform').addClass('collapse');
+                $.post('fonction/fonctionbadlivre.php',function(data){
+                $('.livredrop').empty().append(data.badge);
                 alert('Commande confimer');
+             },'json');
+
+                
             
           });
       });
@@ -265,38 +260,9 @@ $sql="SELECT * FROM `relance` WHERE `datedererelance`='".$DateTime."' AND  `user
 
     });
 
-    $('.modifier').on('click',function(event){
-        event.preventDefault();
-      
-
-    });
-    
-    $('.Annule').on('click',function(event){
-        event.preventDefault();
-        var remarque=$('.remarque').val();
-        if (remarque!="") {
-      $.post($(this).attr('href'),{remarque:remarque},function(data){
-        console.log(data);
-        var idfacture=<?php echo "'".$_GET['idfacture']."'";?>;
- $.post('fonction/confirmationlivre.php',{idfacture:idfacture},function(data){
-                $('.confirm').empty().append(data);
-                $('.confirmform').addClass('collapse');
-                alert('Commande Annule');
-
-            
-          });
-      });
-           }else{
-            alert('Vous deviez indiquer pourquoi la commande a été annuler ');
-           }
-     
-
-    
-
-    });
+   
     
     
-
     
   });
 </script>
